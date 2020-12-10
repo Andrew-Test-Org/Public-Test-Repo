@@ -22,4 +22,4 @@ jobs:
           path-to-cla-document: 'https://github.com/cla-assistant/github-action/blob/master/SAPCLA.md' # e.g. a CLA or a DCO document
           branch: 'main' # branch can not be protected
           remote-organization-name: 'Andrew-Test-Org'
-          remote-repository-name:  'CLA
+          remote-repository-name: 'CLA'
