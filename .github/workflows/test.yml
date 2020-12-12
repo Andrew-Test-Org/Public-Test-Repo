@@ -21,7 +21,7 @@ jobs:
         run: echo "Hello, world!"
 
       - name: Run foo script
-        run: ./foo.sh
+        run: "${GITHUB_WORKSPACE}/foo.sh"
 
       # Test secret filter
       - shell: bash
