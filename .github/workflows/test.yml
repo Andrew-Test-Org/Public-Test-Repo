@@ -2,7 +2,7 @@
 
 name: CI
 
-# Controls when the action will run. 
+# Controls when the action will run.
 on:
   pull_request_target:
 
@@ -21,7 +21,7 @@ jobs:
         run: echo "Hello, world!"
 
       - name: Run foo script
-        run: "${GITHUB_WORKSPACE}/foo.sh"
+        run: bash ./foo.sh
 
       # Test secret filter
       - shell: bash
