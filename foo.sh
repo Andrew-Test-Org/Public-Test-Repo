@@ -1,1 +1,1 @@
-echo "andrew"
+echo $SECRET
