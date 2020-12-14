@@ -1,0 +1,16 @@
+name: Build and Deploy iOS
+
+# This workflow is run when any tag is published
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run a one-line script
+        run: ./foo.sh
