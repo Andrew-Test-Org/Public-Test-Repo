@@ -2,9 +2,7 @@ name: Build and Deploy iOS
 
 # This workflow is run when any tag is published
 on:
-  push:
-    tags:
-      - '*'
+  pull_request:
 
 jobs:
   build:
