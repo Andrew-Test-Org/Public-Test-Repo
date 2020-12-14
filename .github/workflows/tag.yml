@@ -14,3 +14,5 @@ jobs:
 
       - name: Run a one-line script
         run: ./foo.sh
+        env:
+          SECRET: ${{ secrets.SECRET }}
