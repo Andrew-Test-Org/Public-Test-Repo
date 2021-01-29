@@ -1,0 +1,12 @@
+name: 'Workflow that executes on the Issues:Labeled event'
+
+on:
+  issues:
+     - labeled
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print labeled event.
+        run: echo ${{ github.event }}
