@@ -2,7 +2,7 @@ name: 'Workflow that executes when a Release is created'
 
 on:
   release:
-    -types: created
+    -types: published
 
 jobs:
   test:
