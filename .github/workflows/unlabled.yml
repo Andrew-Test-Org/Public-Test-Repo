@@ -1,0 +1,14 @@
+name: 'Workflow that executes on the Issues:Labeled event'
+
+on:
+  issues:
+     types: unlabeled
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Print labeled event.
+        run: echo ${{ toJson(github.event) }}
