@@ -1,0 +1,14 @@
+name: 'Workflow that executes when a Release is created'
+
+on:
+  release:
+    -types: created
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Print release event.
+        run: echo ${{ toJson(github.event) }}
