@@ -2,7 +2,7 @@ name: 'Workflow that executes on the Issues:Labeled event'
 
 on:
   issues:
-     - labeled
+     types: [labeled]
 
 jobs:
   test:
