@@ -7,7 +7,7 @@ on:
       - '*'
 
 jobs:
-  if: github.actor === andrew@expensify.com
+  if: github.actor == 'andrew@expensify.com'
   build:
     runs-on: ubuntu-latest
     steps:
