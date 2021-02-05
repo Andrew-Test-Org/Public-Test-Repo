@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    if: github.actor == 'andrew@expensify.com'
+    if: github.actor == 'roryabraham'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
