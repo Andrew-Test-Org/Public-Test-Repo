@@ -31,6 +31,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: Andrew-Test-Org/Public-Test-Repo/.github/actions/echoEnvironment@master
+      - uses: Andrew-Test-Org/Public-Test-Repo/.github/actions/echoEnvironment@0fa33a3c6e3a74834829db7e78b6a213f8d7a2d1
     env:
       MY_BOOL: true
