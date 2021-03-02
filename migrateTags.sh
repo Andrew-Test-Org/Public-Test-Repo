@@ -7,7 +7,7 @@ while read t; do
     if [[ "$n" != "$t" ]]; then
         git tag $n $t
         git tag -d $t
-    done
+    fi
 done
 
 git push --tags --prune origin refs/tags/*
