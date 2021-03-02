@@ -2,7 +2,7 @@
 git fetch origin
 git tag -l | \
 while read t; do
-    n=$(echo $t | sed "s?\.?/?g")
+    n=$(echo $t | tr -d 'v')
 
     if [[ "$n" != "$t" ]]; then
         git tag $n $t
