@@ -26,3 +26,11 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo ${{ toJSON(github.event) }} && echo "I am Andrew" && exit 0
+
+  echoEnvironment:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: Andrew-Test-Org/Public-Test-Repo/.github/actions/echoEnvironment@master
+    env:
+      MY_BOOL: true
