@@ -4,17 +4,19 @@ on: push
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
 
       - name: Turnstyle
         uses: softprops/turnstyle@v1
+        with:
+          poll-interval-seconds: 10
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Sleep
-        run: sleep 30
+        run: sleep 60
       
       - name: Run a one-line script
         run: echo "Hello, world!"
