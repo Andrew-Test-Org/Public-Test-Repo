@@ -1,6 +1,6 @@
 #!/bin/bash
 git fetch origin
-git tag -l | \
+git tag -l 'v1.0.4' | \
 while read t; do
     n=$(echo $t | tr -d 'v')
 
