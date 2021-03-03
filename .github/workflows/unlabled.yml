@@ -4,6 +4,8 @@ on:
   issues:
      types: unlabeled
 
+     # another comment
+
 jobs:
   test:
     runs-on: ubuntu-latest
