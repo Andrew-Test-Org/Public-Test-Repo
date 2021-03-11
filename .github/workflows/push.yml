@@ -41,7 +41,3 @@ jobs:
       - name: Run if true
         if: env.SHOULD_DEPLOY_PRODUCTION
         run: echo "I am running if I am true, I am:" ${{ env.SHOULD_DEPLOY_PRODUCTION }}
-
-      - name: Run if false
-        if: !env.SHOULD_DEPLOY_PRODUCTION
-        run: echo "I am running if I am false, I am:" ${{ env.SHOULD_DEPLOY_PRODUCTION }}
