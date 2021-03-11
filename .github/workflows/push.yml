@@ -1,6 +1,4 @@
-# This is a basic workflow to help you get started with Actions
-
-name: CI
+name: Push Workflow
 
 # Controls when the action will run.
 on:
@@ -45,7 +43,7 @@ jobs:
         run: echo "I am running if I am true, I am:" ${{ env.SHOULD_DEPLOY_PRODUCTION }}
 
       - name: Run if equal to string true
-        if: ${{ env.SHOULD_DEPLOY_PRODUCTION == "true" }}
+        if: ${{ env.SHOULD_DEPLOY_PRODUCTION == 'true' }}
         run: echo "I am running if I am equal to string true, I am:" ${{ env.SHOULD_DEPLOY_PRODUCTION }}
 
       - name: Run if false
@@ -53,5 +51,5 @@ jobs:
         run: echo "I am running if I am false, I am:" ${{ env.SHOULD_DEPLOY_PRODUCTION }}
 
       - name: Run if equal to string false
-        if: ${{ env.SHOULD_DEPLOY_PRODUCTION == "false" }}
+        if: ${{ env.SHOULD_DEPLOY_PRODUCTION == 'false' }}
         run: echo "I am running if I am equal to string false, I am:" ${{ env.SHOULD_DEPLOY_PRODUCTION }}
