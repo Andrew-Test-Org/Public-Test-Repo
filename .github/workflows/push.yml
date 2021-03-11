@@ -25,7 +25,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: echo ${{ toJSON(github.event) }} && git config --get color.ui && exit 0
+        run: echo ${{ toJSON(github.event) }} && echo "I am Andrew" && exit 0
 
   echoEnvironment:
     runs-on: ubuntu-latest
@@ -33,4 +33,4 @@ jobs:
       - uses: actions/checkout@v2
       - uses: .github/actions/echoEnvironment@0fa33a3c6e3a74834829db7e78b6a213f8d7a2d1
     env:
-      MY_BOOL: false
+      MY_BOOL: true
