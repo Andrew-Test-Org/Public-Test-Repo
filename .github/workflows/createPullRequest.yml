@@ -19,7 +19,10 @@ jobs:
           git config user.name roryabraham
       
       - name: Create a new branch
-        run: git checkout -b version-bump-${{ github.sha }}
+        run: |
+          git checkout -b version-bump-${{ github.sha }}
+          git push --set-upstream origin version-bump-${{ github.sha }}
+
 
       - name: Modify some code
         run: echo ${{ github.sha }} >> myFile.txt
