@@ -2,7 +2,7 @@ name: Issue closed
 
 on:
   issues:
-    - closed
+    types: [closed]
 
 jobs:
   build:
