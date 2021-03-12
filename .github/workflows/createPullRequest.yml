@@ -31,7 +31,7 @@ jobs:
         run: |
           git add myFile.txt
           git commit -m "Create file myFile.txt"
-          git tag 1.0.6-2
+          git tag 1.0.6-3
 
       - name: Push tags
         run: git push --tags
