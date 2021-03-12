@@ -1,0 +1,11 @@
+name: Issue closed
+
+on:
+  issue:
+    - closed
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ github.event }}
