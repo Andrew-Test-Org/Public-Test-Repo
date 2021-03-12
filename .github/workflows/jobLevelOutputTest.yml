@@ -1,0 +1,34 @@
+name: Test job-level outputs, needs, and if
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    outputs:
+      output1: ${{ steps.step1.outputs.test }}
+      output2: ${{ steps.step2.outputs.test }}
+
+    steps:
+      - id: step1
+        run: echo "::set-output name=test::hello"
+      - id: step2
+        run: echo "::set-output name=test::world"
+
+  shouldRun:
+    runs-on: ubuntu-latest
+    needs: setup
+    if: ${{ setup.outputs.output1 == 'hello' }}
+
+    steps:
+      - run: echo ${{ needs.setup.outputs.output1 }} ${{ needs.setup.outputs.output2 }}
+
+  shouldNotRun:
+    runs-on: ubuntu-latest
+    needs: setup
+    if: ${{ setup.outputs.output1 == 'blarginfogigglenohip' }}
+
+    steps:
+      - run: echo 'Error! This should not have happened!'
