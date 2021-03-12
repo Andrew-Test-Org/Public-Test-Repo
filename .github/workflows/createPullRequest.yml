@@ -1,0 +1,50 @@
+name: Create Pull Request Test
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      
+      - name: Setup git
+        run: |
+          git fetch
+          git checkout master
+          git config user.name roryabraham
+      
+      - name: Create a new branch
+        run: |
+          git checkout -b version-bump-${{ github.sha }}
+          git push --set-upstream origin version-bump-${{ github.sha }}
+
+      - name: Modify some code
+        run: echo ${{ github.sha }} >> myFile.txt
+
+      - name: Commit and tag new version
+        run: |
+          git add myFile.txt
+          git commit -m "Create file myFile.txt"
+          git tag 1.0.6
+
+      - name: Push tags
+        run: git push --tags
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@09b9ac155b0d5ad7d8d157ed32158c1b73689109
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: version-bump-${{ github.sha }}
+          base: main
+          author: OSBotify
+          labels: automerge
+
+
+
+      
+
