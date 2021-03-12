@@ -20,7 +20,7 @@ jobs:
   shouldRun:
     runs-on: ubuntu-latest
     needs: setup
-    if: ${{ setup.outputs.output1 == 'hello' }}
+    if: ${{ jobs.setup.outputs.output1 == 'hello' }}
 
     steps:
       - run: echo ${{ needs.setup.outputs.output1 }} ${{ needs.setup.outputs.output2 }}
@@ -28,7 +28,7 @@ jobs:
   shouldNotRun:
     runs-on: ubuntu-latest
     needs: setup
-    if: ${{ setup.outputs.output1 == 'blarginfogigglenohip' }}
+    if: ${{ jobs.setup.outputs.output1 == 'blarginfogigglenohip' }}
 
     steps:
       - run: echo 'Error! This should not have happened!'
