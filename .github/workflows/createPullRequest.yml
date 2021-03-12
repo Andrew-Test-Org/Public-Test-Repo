@@ -15,7 +15,7 @@ jobs:
       - name: Setup git
         run: |
           git fetch
-          git checkout master
+          git checkout main
           git config user.name roryabraham
       
       - name: Create a new branch
