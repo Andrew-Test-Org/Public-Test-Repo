@@ -1,7 +1,7 @@
 name: Issue closed
 
 on:
-  issue:
+  issues:
     - closed
 
 jobs:
