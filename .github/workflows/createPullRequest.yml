@@ -39,11 +39,13 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@09b9ac155b0d5ad7d8d157ed32158c1b73689109
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          branch: version-bump-${{ github.sha }}
-          base: main
           author: OSBotify <reactnative@expensify.com>
+          base: main
+          body: Update version to ${{ github.sha }}
+          branch: version-bump-${{ github.sha }}
           labels: automerge
+          title: Update version to ${{ github.sha }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 
 
 
