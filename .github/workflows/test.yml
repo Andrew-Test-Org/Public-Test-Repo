@@ -23,6 +23,9 @@ jobs:
       - name: Run foo script
         run: ./foo.sh
 
+      - name: Run a nested script
+        run: echo "Hello $(echo 'World')!"
+
       # Test secret filter
       - shell: bash
         env:
