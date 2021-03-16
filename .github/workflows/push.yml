@@ -9,8 +9,8 @@ jobs:
   chooseActions:
     runs-on: ubuntu-latest
     outputs:
-      isTrue: ${{ true }}
-      isFalse: ${{ false }}
+      isTrue: 'true'
+      isFalse: 'false'
     steps:
       - run: echo "Hello world!"
 
