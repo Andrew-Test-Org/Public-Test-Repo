@@ -6,49 +6,41 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  echoActor:
-    runs-on: macos-latest
+  chooseActions:
+    runs-on: ubuntu-latest
     outputs:
-      isActorRory: ${{ steps.isActorRory.outputs.IS_ACTOR_RORY }}
+      isTrue: ${{ true }}
+      isFalse: ${{ false }}
     steps:
-      - name: Echo actor
-        run: echo ${{ github.actor }}
+      - run: echo "Hello world!"
 
-      - name: Is Actor Rory?
-        id: isActorRory
-        run: echo "::set-output name=IS_ACTOR_RORY::${{ github.actor == 'roryabraham' && 'blah' == 'blah' }}"
+  shouldRun:
+    runs-on: ubuntu-latest
+    needs: chooseActions
+    if: ${{ needs.chooseActions.outputs.isTrue == 'true' }}
 
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
-    runs-on: macos-latest
-    needs: echoActor
+  shouldNotRun:
+    runs-on: ubuntu-latest
+    needs: chooseActions
+    if: ${{ needs.chooseActions.outputs.isFalse == 'false' }}
+  
+  shouldRunWithOR:
+    runs-on: ubuntu-latest
+    needs: chooseActions
     if: |
-      ${{ needs.echoActor.outputs.isActorRory == 'true' }} &&
-      ${{ 'blah' == 'blah' }}
+      ${{ needs.chooseActions.outputs.isTrue == 'true' }} ||
+      ${{ needs.chooseActions.outputs.isFalse == 'false' }}
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      - name: Run a nested script
-        run: echo "Hello $(echo 'World')!"
-
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo ${{ toJSON(github.event) }} && echo "I am Andrew" && exit 0
-
-  echoEnvironment:
+  shouldRunWithAND:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: .github/actions/echoEnvironment@0fa33a3c6e3a74834829db7e78b6a213f8d7a2d1
-    env:
-      MY_BOOL: true
+    needs: chooseActions
+    if: |
+      ${{ needs.chooseActions.outputs.isTrue == 'true' }} &&
+      ${{ needs.chooseActions.outputs.isFalse == 'false' }}
 
-  envTest:
+  shouldNotRunWithAND:
     runs-on: ubuntu-latest
-    env:
-      SHOULD_DEPLOY_PRODUCTION: ${{ false }}
-    steps:
-      - name: Run if true
-        if: env.SHOULD_DEPLOY_PRODUCTION
-        run: echo "I am running if I am true, I am:" ${{ env.SHOULD_DEPLOY_PRODUCTION }}
+    needs: chooseActions
+    if: |
+      ${{ needs.chooseActions.outputs.isTrue == 'true' }} &&
+      ${{ needs.chooseActions.outputs.isFalse == 'true' }}
