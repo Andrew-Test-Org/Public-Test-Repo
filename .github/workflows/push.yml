@@ -31,20 +31,26 @@ jobs:
   shouldRunWithOR:
     runs-on: ubuntu-latest
     needs: chooseActions
-    if: ${{ needs.chooseActions.outputs.isTrue == 'true'|| needs.chooseActions.outputs.isFalse == 'false' }}
+    if: |
+      needs.chooseActions.outputs.isTrue == 'true' ||
+      needs.chooseActions.outputs.isFalse == 'false'
     steps:
       - run: echo "Hello world!"
 
   shouldRunWithAND:
     runs-on: ubuntu-latest
     needs: chooseActions
-    if: ${{ needs.chooseActions.outputs.isTrue == 'true' && needs.chooseActions.outputs.isFalse == 'false' }}
+    if: |
+      needs.chooseActions.outputs.isTrue == 'true' &&
+      needs.chooseActions.outputs.isFalse == 'false'
     steps:
       - run: echo "Hello world!"
 
   shouldNotRunWithAND:
     runs-on: ubuntu-latest
     needs: chooseActions
-    if: ${{ needs.chooseActions.outputs.isTrue == 'true' && needs.chooseActions.outputs.isFalse == 'true' }}
+    if: |
+      needs.chooseActions.outputs.isTrue == 'true' &&
+      needs.chooseActions.outputs.isFalse == 'true'
     steps:
       - run: echo "Hello world!"
