@@ -21,6 +21,9 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
 
+      - name: Run a nested script
+        run: echo "Hello $(echo 'World')!"
+
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo ${{ toJSON(github.event) }} && echo "I am Andrew" && exit 0
