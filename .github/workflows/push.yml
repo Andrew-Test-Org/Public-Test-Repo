@@ -8,18 +8,25 @@ on:
 jobs:
   echoActor:
     runs-on: macos-latest
+    outputs:
+      isActorRory: ${{ steps.isActorRory.outputs.IS_ACTOR_RORY }}
     steps:
       - name: Echo actor
         run: echo ${{ github.actor }}
+
+      - name: Is Actor Rory?
+        id: isActorRory
+        run: echo "::set-output name=IS_ACTOR_RORY::${{ github.actor == 'roryabraham' && 'blah' == 'blah' }}"
 
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
     runs-on: macos-latest
+    needs: echoActor
+    if: ${{ needs.echoActor.outputs.isActorRory == 'true' }}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-
       - name: Run a nested script
         run: echo "Hello $(echo 'World')!"
 
