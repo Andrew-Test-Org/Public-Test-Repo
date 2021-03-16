@@ -23,10 +23,9 @@ jobs:
     # The type of runner that the job will run on
     runs-on: macos-latest
     needs: echoActor
-    if: ${{
-      needs.echoActor.outputs.isActorRory == 'true' &&
-      'blah' == 'blah'
-    }}
+    if: |
+      ${{ needs.echoActor.outputs.isActorRory == 'true' }} &&
+      ${{ 'blah' == 'blah' }}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
