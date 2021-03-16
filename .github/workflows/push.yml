@@ -18,11 +18,15 @@ jobs:
     runs-on: ubuntu-latest
     needs: chooseActions
     if: ${{ needs.chooseActions.outputs.isTrue == 'true' }}
+    steps:
+      - run: echo "Hello world!"
 
   shouldNotRun:
     runs-on: ubuntu-latest
     needs: chooseActions
     if: ${{ needs.chooseActions.outputs.isFalse == 'false' }}
+    steps:
+      - run: echo "Hello world!"
   
   shouldRunWithOR:
     runs-on: ubuntu-latest
@@ -30,6 +34,8 @@ jobs:
     if: |
       ${{ needs.chooseActions.outputs.isTrue == 'true' }} ||
       ${{ needs.chooseActions.outputs.isFalse == 'false' }}
+    steps:
+      - run: echo "Hello world!"
 
   shouldRunWithAND:
     runs-on: ubuntu-latest
@@ -37,6 +43,8 @@ jobs:
     if: |
       ${{ needs.chooseActions.outputs.isTrue == 'true' }} &&
       ${{ needs.chooseActions.outputs.isFalse == 'false' }}
+    steps:
+      - run: echo "Hello world!"
 
   shouldNotRunWithAND:
     runs-on: ubuntu-latest
@@ -44,3 +52,5 @@ jobs:
     if: |
       ${{ needs.chooseActions.outputs.isTrue == 'true' }} &&
       ${{ needs.chooseActions.outputs.isFalse == 'true' }}
+    steps:
+      - run: echo "Hello world!"
