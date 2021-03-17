@@ -13,6 +13,7 @@ jobs:
     if: github.event.issue.pull_request || github.event_name == 'pull_request_target'
     steps:
       - run: echo ${{ toJSON(github.event.pull_request.user.login) }}
+      - run: echo "Hello world!"
       - uses: actions-ecosystem/action-regex-match@9c35fe9ac1840239939c59e5db8839422eed8a73
         id: sign
         with:
