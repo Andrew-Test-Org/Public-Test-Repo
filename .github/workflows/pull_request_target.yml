@@ -1,0 +1,12 @@
+name: CLA Assistant
+
+on:
+  pull_request_target:
+      types: [opened, closed, synchronize]
+      branches-ignore: [staging, production]
+
+jobs:
+    pullRequestTarget:
+        runs-on: ubuntu-latest
+        steps:
+            - run: echo 'Hello world'
