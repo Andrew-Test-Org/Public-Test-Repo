@@ -18,6 +18,9 @@ jobs:
           intervalSeconds: 10
           timeoutSeconds: 100
 
+      - name: Do something regardless of build status
+        run: echo "Hello world"
+
       - name: Do something if build success
         if: steps.wait-build.outputs.conclusion == 'success'
         run: echo success && true # You can also just continue with
