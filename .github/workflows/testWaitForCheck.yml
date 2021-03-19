@@ -10,11 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Wait my job
-        uses: tomchv/wait-my-workflow@v1.1.0
+        uses: tomchv/wait-my-workflow@2da0b8a92211e6d7c9964602b99a7052080a1d61
         id: wait-build
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          checkName: myJobToWaitFor
+          checkName: blarginfoabdfhksf
           intervalSeconds: 10
           timeoutSeconds: 100
 
