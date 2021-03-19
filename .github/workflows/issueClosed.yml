@@ -5,7 +5,7 @@ on:
     types: [closed]
 
 jobs:
-  build:
+  issueClosed:
     runs-on: ubuntu-latest
     steps:
       - run: echo ${{ toJSON(github.event) }}

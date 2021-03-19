@@ -14,7 +14,7 @@ jobs:
         id: wait-build
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          checkName: blarginfoabdfhksf
+          checkName: issueClosed
           intervalSeconds: 10
           timeoutSeconds: 100
 
