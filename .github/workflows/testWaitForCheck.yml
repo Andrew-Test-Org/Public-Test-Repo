@@ -1,0 +1,35 @@
+name: Test Wait For Check
+
+# Controls when the action will run.
+on:
+  push:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  waitForCheck:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait my job
+        uses: tomchv/wait-my-workflow@v1.1.0
+        id: wait-build
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          checkName: myJobToWaitFor
+          intervalSeconds: 10
+          timeoutSeconds: 100
+
+      - name: Do something if build success
+        if: steps.wait-build.outputs.conclusion == 'success'
+        run: echo success && true # You can also just continue with
+
+      - name: Do something if build isn't launch
+        if: steps.wait-build.outputs.conclusion == 'does not exist'
+        run: echo job does not exist && true
+
+      - name: Do something if build fail
+        if: steps.wait-build.outputs.conclusion == 'failure'
+        run: echo fail && false # fail if build fail
+
+      - name: Do something if build timeout
+        if: steps.wait-build.outputs.conclusion == 'timed_out'
+        run: echo Timeout && false # fail if build time out

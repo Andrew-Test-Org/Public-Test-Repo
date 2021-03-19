@@ -6,51 +6,10 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  chooseActions:
+  myJobToWaitFor:
     runs-on: ubuntu-latest
     outputs:
       isTrue: 'true'
       isFalse: 'false'
-    steps:
-      - run: echo "Hello world!"
-
-  shouldRun:
-    runs-on: ubuntu-latest
-    needs: chooseActions
-    if: ${{ needs.chooseActions.outputs.isTrue == 'true' }}
-    steps:
-      - run: echo "Hello world!"
-
-  shouldNotRun:
-    runs-on: ubuntu-latest
-    needs: chooseActions
-    if: ${{ needs.chooseActions.outputs.isFalse == 'true' }}
-    steps:
-      - run: echo "Hello world!"
-  
-  shouldRunWithOR:
-    runs-on: ubuntu-latest
-    needs: chooseActions
-    if: |
-      needs.chooseActions.outputs.isTrue == 'true' ||
-      needs.chooseActions.outputs.isFalse == 'false'
-    steps:
-      - run: echo "Hello world!"
-
-  shouldRunWithAND:
-    runs-on: ubuntu-latest
-    needs: chooseActions
-    if: |
-      needs.chooseActions.outputs.isTrue == 'true' &&
-      needs.chooseActions.outputs.isFalse == 'false'
-    steps:
-      - run: echo "Hello world!"
-
-  shouldNotRunWithAND:
-    runs-on: ubuntu-latest
-    needs: chooseActions
-    if: |
-      needs.chooseActions.outputs.isTrue == 'true' &&
-      needs.chooseActions.outputs.isFalse == 'true'
     steps:
       - run: echo "Hello world!"
