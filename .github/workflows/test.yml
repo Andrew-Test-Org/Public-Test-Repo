@@ -16,6 +16,14 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - uses: actions/checkout@v2
+
+      - uses: convictional/trigger-workflow-and-wait@v1.3.0
+        with:
+          owner: Andrew-Test-Org
+          repo: Public-Test-Repo
+          token: ${{ secrets.GITHUB_TOKEN }}
+          workflow_file_name: sleep.yml
+
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo "Hello, world!"
