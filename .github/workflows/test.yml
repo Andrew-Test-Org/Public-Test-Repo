@@ -17,9 +17,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - run: echo "Testing trigger-workflow-and-wait"
-
-      - uses: convictional/trigger-workflow-and-wait@v1.3.0
+      - name: Trigger sleep workflow and wait for it to finish
+        uses: convictional/trigger-workflow-and-wait@v1.3.0
         with:
           owner: Andrew-Test-Org
           repo: Public-Test-Repo
