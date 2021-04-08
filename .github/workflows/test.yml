@@ -23,7 +23,7 @@ jobs:
         with:
           owner: Andrew-Test-Org
           repo: Public-Test-Repo
-          token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           workflow_file_name: sleep.yml
 
       # Runs a single command using the runners shell
