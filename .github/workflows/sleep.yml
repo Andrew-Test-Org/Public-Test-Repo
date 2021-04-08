@@ -4,6 +4,6 @@ jobs:
   sleep:
     runs-on: ubuntu-latest
     steps:
-      run: echo "Sleeping for 30 seconds..."
-      run: sleep 30
-      run: echo "Done!"
+      - run: echo "Sleeping for 30 seconds..."
+      - run: sleep 30
+      - run: echo "Done!"
