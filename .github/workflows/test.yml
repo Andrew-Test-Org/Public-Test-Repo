@@ -23,8 +23,7 @@ jobs:
           owner: Andrew-Test-Org
           repo: Public-Test-Repo
           github_token: ${{ secrets.RORY_TOKEN }}
-          workflow_file_name: sleep.yml
-          someOtherEnvVar: $(echo "some other env var")
+          workflow_file_name: $(echo "sleep.yml")
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
