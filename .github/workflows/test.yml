@@ -20,7 +20,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           repository: 'Expensify/Expensify.cash'
-          ref: 98f1392a5ebbb947c59cbc995a7d6ccab5ace90a
+          ref: Rory-TriggerWorkflowAndWait
 
       - name: Trigger sleep workflow and wait for it to finish
         uses: Expensify/Expensify.cash/.github/actions/triggerWorkflowAndWait@98f1392a5ebbb947c59cbc995a7d6ccab5ace90a
