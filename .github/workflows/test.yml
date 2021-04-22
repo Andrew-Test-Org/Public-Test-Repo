@@ -20,10 +20,10 @@ jobs:
       - uses: actions/checkout@v2
         with:
           repository: 'Expensify/Expensify.cash'
-          ref: b8e1686ba03168287f22e51f73f25d373e576ab3
+          ref: 045d8713e7c3cefdf4bd583e379670bdead79874
 
       - name: Trigger sleep workflow and wait for it to finish
-        uses: Expensify/Expensify.cash/.github/actions/triggerWorkflowAndWait@b8e1686ba03168287f22e51f73f25d373e576ab3
+        uses: Expensify/Expensify.cash/.github/actions/triggerWorkflowAndWait@045d8713e7c3cefdf4bd583e379670bdead79874
         with:
           GITHUB_TOKEN: ${{ secrets.RORY_TOKEN }}
           WORKFLOW: sleep.yml
