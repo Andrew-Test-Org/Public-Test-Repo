@@ -26,7 +26,7 @@ jobs:
         uses: Expensify/Expensify.cash/.github/actions/triggerWorkflowAndWait@f9b8867eab18e509df54b057b23ea93a476f3997
         with:
           GITHUB_TOKEN: ${{ secrets.RORY_TOKEN }}
-          WORKFLOW: $(echo "sleep.yml")
+          WORKFLOW: sleep.yml
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
