@@ -17,11 +17,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - uses: actions/checkout@v2
+        repository: 'Expensify/Expensify.cash'
+        ref: f9b8867eab18e509df54b057b23ea93a476f3997
+
       - name: Trigger sleep workflow and wait for it to finish
-        uses: convictional/trigger-workflow-and-wait@v1.3.0
+        uses: Expensify/Expensify.cash/.github/actions/triggerWorkflowAndWait@f9b8867eab18e509df54b057b23ea93a476f3997
         with:
-          owner: Andrew-Test-Org
-          repo: Public-Test-Repo
           github_token: ${{ secrets.RORY_TOKEN }}
           workflow_file_name: $(echo "sleep.yml")
 
