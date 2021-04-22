@@ -18,8 +18,9 @@ jobs:
       - uses: actions/checkout@v2
 
       - uses: actions/checkout@v2
-        repository: 'Expensify/Expensify.cash'
-        ref: f9b8867eab18e509df54b057b23ea93a476f3997
+        with:
+          repository: 'Expensify/Expensify.cash'
+          ref: f9b8867eab18e509df54b057b23ea93a476f3997
 
       - name: Trigger sleep workflow and wait for it to finish
         uses: Expensify/Expensify.cash/.github/actions/triggerWorkflowAndWait@f9b8867eab18e509df54b057b23ea93a476f3997
