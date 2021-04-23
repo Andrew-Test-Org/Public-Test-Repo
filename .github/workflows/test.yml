@@ -27,7 +27,7 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.RORY_TOKEN }}
           WORKFLOW: sleep.yml
-          INPUTS: {name: Rorcipher, home: Portlandia}
+          INPUTS: '{name: Rorcipher, home: Portlandia}'
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
