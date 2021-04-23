@@ -10,10 +10,6 @@ on:
         description: 'location'
         required: false
         default: 'The Octoverse'
-      age:
-        description: 'age of person'
-        required: false
-        default: 18
 
 jobs:
   sleep:
