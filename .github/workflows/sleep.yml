@@ -10,11 +10,17 @@ on:
         description: 'location'
         required: false
         default: 'The Octoverse'
+      age:
+        description: 'age of person'
+        required: false
+        default: 18
 
 jobs:
   sleep:
     runs-on: ubuntu-latest
     steps:
+      - name: Output inputs :D
+        run: echo ${{ toJSON(github.event.inputs) }}
       - run: echo "Getting ready to sleep for 30 seconds"
       - run: echo "Sleeping for 30 seconds..."
       - run: sleep 30
