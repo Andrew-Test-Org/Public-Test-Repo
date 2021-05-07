@@ -23,7 +23,7 @@ jobs:
           ref: 0e32c5dc81cbc4bc0e6e65ba86708cb474b8e12e
 
       - name: Trigger sleep workflow and wait for it to finish
-        uses: Expensify/Expensify.cash/.github/actions/triggerWorkflowAndWait@0e32c5dc81cbc4bc0e6e65ba86708cb474b8e12e
+        uses: Expensify/Expensify.cash/.github/actions/triggerWorkflowAndWait@9e1a78214669d12121ded711113e038278c32e03
         with:
           GITHUB_TOKEN: ${{ secrets.RORY_TOKEN }}
           WORKFLOW: sleep.yml
