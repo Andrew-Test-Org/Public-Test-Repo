@@ -29,7 +29,7 @@ jobs:
           repo: Public-Test-Repo
           github_token: ${{ secrets.RORY_TOKEN }}
           workflow_file_name: sleep.yml
-          inputs: '{ "name": "Rorcipher", "home": ${{ github.event_name }} }'
+          inputs: '{ "name": "Rorcipher", "home": "${{ github.event_name }}" }'
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
