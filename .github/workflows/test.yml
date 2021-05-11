@@ -23,11 +23,13 @@ jobs:
           ref: 0e32c5dc81cbc4bc0e6e65ba86708cb474b8e12e
 
       - name: Trigger sleep workflow and wait for it to finish
-        uses: Expensify/Expensify.cash/.github/actions/triggerWorkflowAndWait@9e1a78214669d12121ded711113e038278c32e03
+        uses: convictional/trigger-workflow-and-wait@6acf1632a9a81ff2ee5a5a809d6c0fa519eeed3e
         with:
-          GITHUB_TOKEN: ${{ secrets.RORY_TOKEN }}
-          WORKFLOW: sleep.yml
-          INPUTS: '{"name": "Rorcipher", "home": "Portlandia 2.0"}'
+          owner: Andrew-Test-Org
+          repo: Public-Test-Repo
+          github_token: ${{ secrets.RORY_TOKEN }}
+          workflow_file_name: sleep.yml
+          inputs: '{ "name": "Rorcipher", "home": ${{ github.event_name }} }'
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
