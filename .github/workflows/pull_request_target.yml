@@ -9,7 +9,7 @@ jobs:
     pullRequestTarget:
         runs-on: ubuntu-latest
         steps:
-            - run: echo 'Hello world'
+            - run: echo 'Testing auto-approve with a forked repo'
 
             - name: Check for an auto approve
               # Version: 2.0.0
