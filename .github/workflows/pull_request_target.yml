@@ -10,3 +10,9 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - run: echo 'Hello world'
+
+            - name: Check for an auto approve
+              # Version: 2.0.0
+              uses: roryabraham/auto-approve-action@1d9eaca19e005b39bc4495c51fc7439734b2753d
+              with:
+                github-token: ${{ secrets.GITHUB_TOKEN }}
