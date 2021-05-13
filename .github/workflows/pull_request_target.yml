@@ -13,7 +13,7 @@ jobs:
 
             - name: Check for an auto approve
               # Version: 2.0.0
-              uses: roryabraham/auto-approve-action@1d9eaca19e005b39bc4495c51fc7439734b2753d
+              uses: roryabraham/auto-approve-action@6bb4a3dcf07664d0131e1c74a4bc6d0d8c849978
               with:
                 github-token: ${{ secrets.GITHUB_TOKEN }}
                 pull-request-number: 35
