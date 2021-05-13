@@ -16,6 +16,7 @@ jobs:
               uses: roryabraham/auto-approve-action@1d9eaca19e005b39bc4495c51fc7439734b2753d
               with:
                 github-token: ${{ secrets.GITHUB_TOKEN }}
+                pull-request-number: 35
 
             - name: Comment on the pull request
               uses: actions-ecosystem/action-create-comment@cd098164398331c50e7dfdd0dfa1b564a1873fac
