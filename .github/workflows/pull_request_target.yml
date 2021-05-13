@@ -21,7 +21,7 @@ jobs:
               uses: actions-ecosystem/action-create-comment@cd098164398331c50e7dfdd0dfa1b564a1873fac
               with:
                 github_token: ${{ secrets.GITHUB_TOKEN }}
-                number: ${{ github.event. }}
+                number: ${{ github.event.pull_request.number }}
                 body: |
                   Friendly reminder that deploy blockers are time-sensitive issues!
                   [Checkout out the open `StagingDeployCash` deploy checklist](https://github.com/Expensify/Expensify.cash/issues?q=is%3Aopen+is%3Aissue+label%3AStagingDeployCash) to look at the list of PRs included in this release.
