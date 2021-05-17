@@ -13,3 +13,9 @@ jobs:
       isFalse: 'false'
     steps:
       - run: echo "Hello world!"
+
+      - name: Get merged pull request
+        id: getMergedPullRequest
+        uses: actions-ecosystem/action-get-merged-pull-request@8099ed651763e71c70ee59e00251b33ee5c977da
+
+      - run: echo ${{ toJSON(github) }}

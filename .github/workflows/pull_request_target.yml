@@ -1,7 +1,7 @@
 name: PullRequestTarget
 
 on:
-  pull_request_target:
+  pull_request:
       types: [opened, closed, synchronize]
       branches-ignore: [staging, production]
 
@@ -9,10 +9,22 @@ jobs:
     pullRequestTarget:
         runs-on: ubuntu-latest
         steps:
-            - run: echo 'Hello world'
+            - run: echo 'Testing auto-approve with a forked repo'
 
             - name: Check for an auto approve
               # Version: 2.0.0
-              uses: roryabraham/auto-approve-action@1d9eaca19e005b39bc4495c51fc7439734b2753d
+              uses: roryabraham/auto-approve-action@6bb4a3dcf07664d0131e1c74a4bc6d0d8c849978
               with:
                 github-token: ${{ secrets.GITHUB_TOKEN }}
+                pull-request-number: 35
+
+            - name: Comment on the pull request
+              uses: actions-ecosystem/action-create-comment@cd098164398331c50e7dfdd0dfa1b564a1873fac
+              with:
+                github_token: ${{ secrets.GITHUB_TOKEN }}
+                number: ${{ github.event.pull_request.number }}
+                body: |
+                  :wave: Friendly reminder that deploy blockers are time-sensitive ⏱ issues! [Check out the open `StagingDeployCash` deploy checklist](https://github.com/Expensify/Expensify.cash/issues?q=is%3Aopen+is%3Aissue+label%3AStagingDeployCash) to see the list of PRs included in this release, then work quickly to do one of the following:
+                    1. Identify the pull request that introduced this issue and revert it.
+                    2. Find someone who can quickly fix the issue.
+                    3. Fix the issue yourself.
