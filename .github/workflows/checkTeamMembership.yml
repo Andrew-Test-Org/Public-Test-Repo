@@ -15,7 +15,7 @@ jobs:
           username: ${{ github.actor }}
           team: rory-custom-team
 
-      - run: echo ${{ toJSON(steps.isUserDeployer.outputs) }}
+      # - run: echo ${{ toJSON(steps.isUserDeployer.outputs) }}
 
   outputTeams:
     runs-on: ubuntu-latest
