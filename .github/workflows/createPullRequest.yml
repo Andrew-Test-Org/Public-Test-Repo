@@ -47,3 +47,6 @@ jobs:
           title: Update version to ${{ github.sha }}
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - run: echo "Dummy commit 5"
+
+      - run: echo "Dummy commit 6"
