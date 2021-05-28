@@ -1,0 +1,24 @@
+name: Check team membership for a user
+
+on: workflow_dispatch
+
+jobs:
+  getTeams:
+    runs-on: ubuntu-latest
+    outputs:
+      IS_RORY: ${{ steps.isUserDeployer.outputs.isTeamMember }}
+    steps:
+      - id: isUserDeployer
+        uses: tspascoal/get-user-teams-membership@baf2e6adf4c3b897bd65a7e3184305c165aec872
+        with:
+          GITHUB_TOKEN: ${{ secrets.RORY_TOKEN }}
+          username: ${{ github.actor }}
+          team: rory-custom-team
+
+      - run: echo ${{ toJSON(steps.isUserDeployer.outputs) }}
+
+  outputTeams:
+    needs: getTeams
+    if: ${{ needs.getTeams.outputs.IS_RORY == 'true' }}
+    steps:
+      - run: echo "It's rory!"
