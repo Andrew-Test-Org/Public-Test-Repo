@@ -21,6 +21,8 @@ jobs:
 
       - run: echo "Dummy commit 2"
 
+      - run: echo "Dummy commit 4"
+
   outputTeams:
     runs-on: ubuntu-latest
     needs: getTeams
