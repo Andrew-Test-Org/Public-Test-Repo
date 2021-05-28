@@ -17,6 +17,8 @@ jobs:
 
       # - run: echo ${{ toJSON(steps.isUserDeployer.outputs) }}
 
+      - run: echo "Dummy commit 1"
+
   outputTeams:
     runs-on: ubuntu-latest
     needs: getTeams
