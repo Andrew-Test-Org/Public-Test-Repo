@@ -20,6 +20,6 @@ jobs:
   outputTeams:
     runs-on: ubuntu-latest
     needs: getTeams
-    if: ${{ needs.getTeams.outputs.IS_RORY == 'true' }}
+    if: ${{ needs.getTeams.outputs.IS_RORY }}
     steps:
       - run: echo "It's rory!"
