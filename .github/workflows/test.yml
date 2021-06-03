@@ -24,7 +24,7 @@ jobs:
       - name: Fetch history from test branch
         run: |
           git show-ref --head | grep HEAD
-          git swtich Rory-TestBranch
+          git switch Rory-TestBranch
           git show-ref --head | grep HEAD
           git checkout -
           git show-ref --head | grep Rory-TestBranch
