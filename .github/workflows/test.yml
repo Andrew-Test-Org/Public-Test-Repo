@@ -21,12 +21,22 @@ jobs:
           ref: main
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Fetch history from test branch
+      - name: Show head before
+        run: git show-ref --head | grep HEAD
+
+      - name: Fetch new history and checkout new branch
         run: |
-          git remote -v
-          git show-ref --head | grep HEAD
           git fetch
           git checkout Rory-TestBranch
-          git show-ref --head | grep HEAD
-          git checkout -
-          git show-ref --head | grep Rory-TestBranch
+      
+      - name: Show head of new branch
+        run: git show-ref --head | grep HEAD
+
+      - name: Switch back to original branch
+        run: git checkout -
+      
+      - name: Show original HEAD again
+        run: git show-ref --head | grep HEAD
+
+      - name: Make sure we have history from the other branch
+        run: git show-ref --head | grep Rory-TestBranch
