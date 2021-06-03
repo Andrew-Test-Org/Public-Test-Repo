@@ -16,31 +16,29 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - uses: actions/checkout@v2
-
-      - uses: actions/checkout@v2
         with:
-          repository: 'Expensify/Expensify.cash'
-          ref: 0e32c5dc81cbc4bc0e6e65ba86708cb474b8e12e
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Trigger sleep workflow and wait for it to finish
-        uses: convictional/trigger-workflow-and-wait@6acf1632a9a81ff2ee5a5a809d6c0fa519eeed3e
-        with:
-          owner: Andrew-Test-Org
-          repo: Public-Test-Repo
-          github_token: ${{ secrets.RORY_TOKEN }}
-          workflow_file_name: sleep.yml
-          inputs: '{ "name": "Rorcipher", "home": "${{ github.event_name }}" }'
+      - name: Output "good"
+        id: good
+        run: echo "::set-output name=GOOD::good"
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo "Hello, world!"
+      - name: Output "bad"
+        id: bad
+        run: echo "::set-output name=BAD::bad"
 
-      - name: Run foo script
-        run: ./foo.sh
-
-      # Test secret filter
-      - shell: bash
-        env:
-          SECRET: ${{ secrets.SECRET }}
+      - name: Run script w/ good
         run: |
-          echo "The secret is: $SECRET"
+          if ./foo.sh ${{ steps.good.outputs.GOOD }}; then
+            echo "Script correctly had exit code 0 for input good"
+          else
+            echo "Script incorrectly had nonzero exit code for input good"
+          fi
+      
+      - name: Run script w/ bad
+        run: |
+          if ./foo.sh ${{ steps.bad.outputs.BAD }}; then
+            echo "Script incorrectly had exit code 0 for input bad"
+          else
+            echo "Script correctly had nonzero exit code for input bad"
+          fi

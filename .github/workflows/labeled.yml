@@ -12,3 +12,5 @@ jobs:
 
       - name: Print labeled event.
         run: echo ${{ toJson(github.event) }}
+
+      - run: echo "Dummy commit 3"

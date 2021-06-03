@@ -17,6 +17,14 @@ jobs:
 
       # - run: echo ${{ toJSON(steps.isUserDeployer.outputs) }}
 
+      - run: echo "Dummy commit 1"
+
+      - run: echo "Dummy commit 2"
+
+      - run: echo "Dummy commit 4"
+
+      - run: echo "Dummy commit 6"
+
   outputTeams:
     runs-on: ubuntu-latest
     needs: getTeams
