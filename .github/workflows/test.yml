@@ -24,19 +24,8 @@ jobs:
       - name: Show head before
         run: git show-ref --head | grep HEAD
 
-      - name: Fetch new history and checkout new branch
-        run: |
-          git fetch
-          git checkout Rory-TestBranch
+      - name: Fetch history
+        run: git fetch
       
-      - name: Show head of new branch
-        run: git show-ref --head | grep HEAD
-
-      - name: Switch back to original branch
-        run: git checkout -
-      
-      - name: Show original HEAD again
-        run: git show-ref --head | grep HEAD
-
       - name: Make sure we have history from the other branch
         run: git show-ref --head | grep Rory-TestBranch
