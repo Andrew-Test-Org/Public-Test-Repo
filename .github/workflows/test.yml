@@ -15,32 +15,16 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout main branch
+        uses: actions/checkout@v2
+          with:
+            ref: main
+            token: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: actions/checkout@v2
-        with:
-          repository: 'Expensify/Expensify.cash'
-          ref: 0e32c5dc81cbc4bc0e6e65ba86708cb474b8e12e
-
-      - name: Trigger sleep workflow and wait for it to finish
-        uses: convictional/trigger-workflow-and-wait@6acf1632a9a81ff2ee5a5a809d6c0fa519eeed3e
-        with:
-          owner: Andrew-Test-Org
-          repo: Public-Test-Repo
-          github_token: ${{ secrets.RORY_TOKEN }}
-          workflow_file_name: sleep.yml
-          inputs: '{ "name": "Rorcipher", "home": "${{ github.event_name }}" }'
-
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo "Hello, world!"
-
-      - name: Run foo script
-        run: ./foo.sh
-
-      # Test secret filter
-      - shell: bash
-        env:
-          SECRET: ${{ secrets.SECRET }}
+      - name: Fetch history from test branch
         run: |
-          echo "The secret is: $SECRET"
+          git show-ref --head | grep HEAD
+          git swtich Rory-TestBranch
+          git show-ref --head | grep HEAD
+          git checkout -
+          git show-ref --head | grep Rory-TestBranch
