@@ -31,7 +31,7 @@ jobs:
 
       - name: Run script w/ good
         run: |
-          if [[ "$(./foo.sh ${{ steps.good.outputs.GOOD }})" ]]; then
+          if $(./foo.sh ${{ steps.good.outputs.GOOD }}); then
             echo "Script correctly had exit code 0 for input good"
           else
             echo "Script incorrectly had nonzero exit code for input good"
@@ -39,7 +39,7 @@ jobs:
       
       - name: Run script w/ bad
         run: |
-          if [[ "$(./foo.sh ${{ steps.bad.outputs.BAD }})" ]]; then
+          if $(./foo.sh ${{ steps.bad.outputs.BAD }}); then
             echo "Script incorrectly had exit code 0 for input bad"
           else
             echo "Script correctly had nonzero exit code for input bad"
