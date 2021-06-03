@@ -15,10 +15,8 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: Checkout main branch
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
         with:
-          ref: main
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Output "good"
