@@ -23,6 +23,7 @@ jobs:
 
       - name: Fetch history from test branch
         run: |
+          git remote -v
           git show-ref --head | grep HEAD
           git switch Rory-TestBranch
           git show-ref --head | grep HEAD
