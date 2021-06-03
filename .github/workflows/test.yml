@@ -25,7 +25,8 @@ jobs:
         run: |
           git remote -v
           git show-ref --head | grep HEAD
-          git switch -c Rory-TestBranch origin/Rory-TestBranch
+          git fetch
+          git checkout Rory-TestBranch
           git show-ref --head | grep HEAD
           git checkout -
           git show-ref --head | grep Rory-TestBranch
