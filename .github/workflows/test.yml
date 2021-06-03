@@ -21,11 +21,26 @@ jobs:
           ref: main
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Show head before
-        run: git show-ref --head | grep HEAD
+      - name: Output "good"
+        id: good
+        run: echo "::set-output name=GOOD::good"
 
-      - name: Fetch history
-        run: git fetch
+      - name: Output "bad"
+        id: bad
+        run: echo "::set-output name=BAD::bad"
+
+      - name: Run script w/ good
+        run: |
+          if [[ "$(./foo.sh ${{ steps.good.outputs.GOOD }})" ]]; then
+            echo "Script correctly had exit code 0 for input good"
+          else
+            echo "Script incorrectly had nonzero exit code for input good"
+          fi
       
-      - name: Make sure we have history from the other branch
-        run: git show-ref --head | grep Rory-TestBranch
+      - name: Run script w/ bad
+        run: |
+          if [[ "$(./foo.sh ${{ steps.bad.outputs.BAD }})" ]]; then
+            echo "Script incorrectly had exit code 0 for input bad"
+          else
+            echo "Script correctly had nonzero exit code for input bad"
+          fi
