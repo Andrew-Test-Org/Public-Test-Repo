@@ -1,0 +1,16 @@
+name: 'Hello World'
+description: 'Greet someone'
+runs:
+  using: 'composite'
+  steps:
+    # Test uses in composite action
+    - uses: actions/checkout@v2
+
+    # Verify that we have a GH token
+    - run: echo ${process.env.AS_REPO}
+      shell: bash
+
+    - run: echo ${process.env.AS_WORKFLOW}
+      shell: bash
+
+    - run: Andrew-Test-Org/Public-Test-Repo/foo.sh
