@@ -1,0 +1,11 @@
+name: Test Fake Ternary Syntax
+
+on:
+  issues:
+    types: [closed]
+
+jobs:
+  issueClosed:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ 'true' == 'true' && 'production' || 'staging' }}
