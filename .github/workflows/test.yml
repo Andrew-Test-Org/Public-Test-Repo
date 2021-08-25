@@ -24,7 +24,7 @@ jobs:
         run: echo "Hello, world!"
 
       # Create comment for diff, diff
-      # Diff again
+      # Diff
       - name: Run foo script
         run: ./foo.sh
 
