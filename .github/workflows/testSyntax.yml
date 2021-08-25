@@ -8,4 +8,15 @@ jobs:
   issueClosed:
     runs-on: ubuntu-latest
     steps:
-      - run: echo ${{ 'true' == 'true' && 'production' || 'staging' }}
+      - name: 'Announces a production deploy in the #expensify-open-source Slack room'
+        uses: 8398a7/action-slack@v3
+        with:
+          status: custom
+          custom_payload: |
+            {
+              channel: '#announce',
+              attachments: [{
+                color: 'good',
+                text: `Successfully deployed ${process.env.AS_REPO} to ${{ env.SHOULD_DEPLOY_PRODUCTION == 'true' && 'production' || 'staging' }}.`,
+              }]
+            }
