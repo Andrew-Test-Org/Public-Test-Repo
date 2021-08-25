@@ -17,7 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - uses: Andrew-Test-Org/Public-Test-Repo/.github/actions/composite/myCompositeAction@893d3143f73a9dd9e0405dc858d361b8ba45ac97
+      - uses: Andrew-Test-Org/Public-Test-Repo/.github/actions/composite/myCompositeAction@main
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
