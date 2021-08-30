@@ -11,7 +11,7 @@ jobs:
   validate:
     runs-on: ubuntu-latest
     outputs:
-      IS_DEPLOYER: ${{ toJSON(fromJSON(steps.isFakeTeamMember.outputs.isTeamMember) || github.actor == 'roryabraham') }}
+      IS_DEPLOYER: ${{ fromJSON(steps.isFakeTeamMember.outputs.isTeamMember) || github.actor == 'roryabraham' }}
     steps:
       - id: isTeamMember
         uses: tspascoal/get-user-teams-membership@baf2e6adf4c3b897bd65a7e3184305c165aec872
@@ -65,8 +65,8 @@ jobs:
     steps:
       - run: echo ${{ needs.validate.outputs.IS_DEPLOYER }}
 
-      - if: ${{ fromJSON(needs.validate.outputs.IS_DEPLOYER) }}
+      - if: needs.validate.outputs.IS_DEPLOYER
         run: echo "${{ github.actor }} is a deployer"
 
-      - if: ${{ fromJSON(needs.validate.outputs.IS_DEPLOYER) }}
+      - if: needs.validate.outputs.IS_DEPLOYER
         run: echo "${{ github.actor }} is not a deployer"
