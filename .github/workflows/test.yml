@@ -67,8 +67,8 @@ jobs:
 
       - run: echo ${{ fromJSON(needs.validate.outputs.IS_DEPLOYER) }}
 
-      - if: needs.validate.outputs.IS_DEPLOYER
+      - if: ${{ fromJSON(needs.validate.outputs.IS_DEPLOYER) }}
         run: echo "${{ github.actor }} is a deployer"
 
-      - if: needs.validate.outputs.IS_DEPLOYER
+      - if: ${{ fromJSON(needs.validate.outputs.IS_DEPLOYER) }}
         run: echo "${{ github.actor }} is not a deployer"
