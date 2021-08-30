@@ -27,23 +27,23 @@ jobs:
           username: ${{ github.actor }}
           team: fake-team
 
-      - run: echo ${{ steps.isTeamMember.outputs.isTeamMember }}
+      - run: echo ${{ steps.isTeamMember.outputs.isTeamMember == 'true' }}
 
-      - run: echo ${{ steps.isFakeTeamMember.outputs.isTeamMember }}
+      - run: echo ${{ steps.isFakeTeamMember.outputs.isTeamMember == 'true' }}
 
       - run: echo ${{ github.actor == 'roryabraham' }}
 
       - run: echo ${{ github.actor == 'AndrewGable' }}
 
-      - run: echo ${{ steps.isFakeTeamMember.outputs.isTeamMember || github.actor == 'roryabraham' }}
+      - run: echo ${{ steps.isFakeTeamMember.outputs.isTeamMember == 'true' || github.actor == 'roryabraham' }}
 
-      - run: echo ${{ github.actor == 'roryabraham' || steps.isFakeTeamMember.outputs.isTeamMember }}
+      - run: echo ${{ github.actor == 'roryabraham' || steps.isFakeTeamMember.outputs.isTeamMember == 'true' }}
 
-      - run: echo ${{ github.actor == 'AndrewGable' || steps.isTeamMember.outputs.isTeamMember }}
+      - run: echo ${{ github.actor == 'AndrewGable' || steps.isTeamMember.outputs.isTeamMember == 'true' }}
 
-      - run: echo ${{ github.actor == 'AndrewGable' || steps.isFakeTeamMember.outputs.isTeamMember }}
+      - run: echo ${{ github.actor == 'AndrewGable' || steps.isFakeTeamMember.outputs.isTeamMember == 'true' }}
 
-      - run: echo ${{ steps.isTeamMember.outputs.isTeamMember || github.actor == 'AndrewGable' }}
+      - run: echo ${{ steps.isTeamMember.outputs.isTeamMember == 'true' || github.actor == 'AndrewGable' }}
 
 
   # This workflow contains a single job called "build"
