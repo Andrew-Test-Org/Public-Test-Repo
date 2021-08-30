@@ -43,10 +43,10 @@ jobs:
       # - uses: actions/checkout@v2
       - run: echo ${{ needs.validate.outputs.IS_DEPLOYER }}
 
-      - if: ${{ needs.validate.outputs.IS_DEPLOYER }}
+      - if: ${{ needs.validate.outputs.IS_DEPLOYER == 'true'}}
         run: echo "${{ github.actor }} is a deployer"
 
-      - if: ${{ !needs.validate.outputs.IS_DEPLOYER }}
+      - if: ${{ needs.validate.outputs.IS_DEPLOYER == 'false' }}
         run: echo "${{ github.actor }} is not a deployer"
 
       # Test secret filter
