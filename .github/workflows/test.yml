@@ -27,17 +27,17 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - uses: actions/checkout@v2
+      # - uses: actions/checkout@v2
 
       - if: ${{ needs.validate.outputs.IS_DEPLOYER }}
-        run: echo "${github.actor} is a deployer"
+        run: echo "${{ github.actor }} is a deployer"
 
       - if: ${{ !needs.validate.outputs.IS_DEPLOYER }}
-        run: echo "${github.actor} is not a deployer"
+        run: echo "${{ github.actor }} is not a deployer"
 
       # Test secret filter
-      - shell: bash
-        env:
-          SECRET: ${{ secrets.SECRET }}
-        run: |
-          echo "The secret is: $SECRET"
+      # - shell: bash
+      #   env:
+      #     SECRET: ${{ secrets.SECRET }}
+      #   run: |
+      #     echo "The secret is: $SECRET"
