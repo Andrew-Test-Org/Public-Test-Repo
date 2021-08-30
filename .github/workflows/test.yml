@@ -33,7 +33,13 @@ jobs:
 
       - run: echo ${{ github.actor == 'roryabraham' }}
 
+      - run: echo ${{ github.actor == 'AndrewGable' }}
+
       - run: echo ${{ steps.isFakeTeamMember.outputs.isTeamMember || github.actor == 'roryabraham' }}
+
+      - run: echo ${{ github.actor == 'roryabraham' || steps.isFakeTeamMember.outputs.isTeamMember }}
+
+      - run: echo ${{ github.actor == 'AndrewGable' || steps.isTeamMember.outputs.isTeamMember }}
 
 
   # This workflow contains a single job called "build"
