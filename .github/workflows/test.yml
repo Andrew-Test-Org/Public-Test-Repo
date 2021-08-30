@@ -31,6 +31,10 @@ jobs:
 
       - run: echo ${{ steps.isFakeTeamMember.outputs.isTeamMember }}
 
+      - run: echo ${{ github.actor == 'roryabraham' }}
+
+      - run: echo ${{ steps.isFakeTeamMember.outputs.isTeamMember || github.actor == 'roryabraham' }}
+
 
   # This workflow contains a single job called "build"
   build:
