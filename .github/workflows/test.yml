@@ -13,12 +13,12 @@ jobs:
     outputs:
       IS_DEPLOYER: ${{ steps.isFakeTeamMember.outputs.isTeamMember }}
     steps:
-      # - id: isTeamMember
-      #   uses: tspascoal/get-user-teams-membership@baf2e6adf4c3b897bd65a7e3184305c165aec872
-      #   with:
-      #     GITHUB_TOKEN: ${{ secrets.RORY_TOKEN }}
-      #     username: ${{ github.actor }}
-      #     team: rory-custom-team
+      - id: isTeamMember
+        uses: tspascoal/get-user-teams-membership@baf2e6adf4c3b897bd65a7e3184305c165aec872
+        with:
+          GITHUB_TOKEN: ${{ secrets.RORY_TOKEN }}
+          username: ${{ github.actor }}
+          team: rory-custom-team
 
       - id: isFakeTeamMember
         uses: tspascoal/get-user-teams-membership@baf2e6adf4c3b897bd65a7e3184305c165aec872
@@ -26,6 +26,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.RORY_TOKEN }}
           username: ${{ github.actor }}
           team: fake-team
+
+      - run: echo ${{ steps.isTeamMember.outputs.isTeamMember }}
+
+      - run: echo ${{ steps.isFakeTeamMember.outputs.isTeamMember }}
+
 
   # This workflow contains a single job called "build"
   build:
@@ -36,6 +41,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # - uses: actions/checkout@v2
+      - run: echo ${{ needs.validate.outputs.IS_DEPLOYER }}
 
       - if: ${{ needs.validate.outputs.IS_DEPLOYER }}
         run: echo "${{ github.actor }} is a deployer"
