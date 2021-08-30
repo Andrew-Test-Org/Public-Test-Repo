@@ -28,10 +28,10 @@ jobs:
           team: fake-team
 
       # Should be true
-      - run: echo ${{ steps.isTeamMember.outputs.isTeamMember == 'true' }}
+      - run: echo ${{ fromJSON(steps.isTeamMember.outputs.isTeamMember) }}
 
       # Should be false
-      - run: echo ${{ steps.isFakeTeamMember.outputs.isTeamMember == 'true' }}
+      - run: echo ${{ fromJSON(steps.isFakeTeamMember.outputs.isTeamMember) }}
 
       # Should be true
       - run: echo ${{ github.actor == 'roryabraham' }}
@@ -40,19 +40,19 @@ jobs:
       - run: echo ${{ github.actor == 'AndrewGable' }}
 
       # Should be true
-      - run: echo ${{ steps.isFakeTeamMember.outputs.isTeamMember == 'true' || github.actor == 'roryabraham' }}
+      - run: echo ${{ fromJSON(steps.isFakeTeamMember.outputs.isTeamMember) || github.actor == 'roryabraham' }}
 
       # Should be true
-      - run: echo ${{ github.actor == 'roryabraham' || steps.isFakeTeamMember.outputs.isTeamMember == 'true' }}
+      - run: echo ${{ github.actor == 'roryabraham' || fromJSON(steps.isFakeTeamMember.outputs.isTeamMember) }}
 
       # Should be true
-      - run: echo ${{ github.actor == 'AndrewGable' || steps.isTeamMember.outputs.isTeamMember == 'true' }}
+      - run: echo ${{ github.actor == 'AndrewGable' || fromJSON(steps.isTeamMember.outputs.isTeamMember) }}
 
       # Should be false
-      - run: echo ${{ github.actor == 'AndrewGable' || steps.isFakeTeamMember.outputs.isTeamMember == 'true' }}
+      - run: echo ${{ github.actor == 'AndrewGable' || fromJSON(steps.isFakeTeamMember.outputs.isTeamMember) }}
 
       # Should be true
-      - run: echo ${{ steps.isTeamMember.outputs.isTeamMember == 'true' || github.actor == 'AndrewGable' }}
+      - run: echo ${{ fromJSON(steps.isTeamMember.outputs.isTeamMember) || github.actor == 'AndrewGable' }}
 
 
   # This workflow contains a single job called "build"
@@ -65,8 +65,8 @@ jobs:
     steps:
       - run: echo ${{ needs.validate.outputs.IS_DEPLOYER }}
 
-      - if: ${{ needs.validate.outputs.IS_DEPLOYER == 'true'}}
+      - if: ${{ fromJSON(needs.validate.outputs.IS_DEPLOYER) }}
         run: echo "${{ github.actor }} is a deployer"
 
-      - if: ${{ needs.validate.outputs.IS_DEPLOYER == 'false' }}
+      - if: ${{ fromJSON(needs.validate.outputs.IS_DEPLOYER) }}
         run: echo "${{ github.actor }} is not a deployer"
