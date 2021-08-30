@@ -65,6 +65,8 @@ jobs:
     steps:
       - run: echo ${{ needs.validate.outputs.IS_DEPLOYER }}
 
+      - run: echo ${{ fromJSON(needs.validate.outputs.IS_DEPLOYER) }}
+
       - if: needs.validate.outputs.IS_DEPLOYER
         run: echo "${{ github.actor }} is a deployer"
 
