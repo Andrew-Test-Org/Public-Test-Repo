@@ -11,13 +11,21 @@ jobs:
   validate:
     runs-on: ubuntu-latest
     outputs:
-      IS_DEPLOYER: ${{ steps.isUserRory.outputs.isRory || steps.isUserAndrew.outputs.isAndrew }}
+      IS_DEPLOYER: ${{ steps.isTeamMember.outputs.isTeamMember }}
     steps:
-      - id: isUserRory
-        run: echo "::set-output name=isRory::${{ github.actor == 'roryabraham' }}"
+      - id: isTeamMember
+        uses: tspascoal/get-user-teams-membership@baf2e6adf4c3b897bd65a7e3184305c165aec872
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          username: ${{ github.actor }}
+          team: rory-custom-team
 
-      - id: isUserAndrew
-        run: echo "::set-output name=isAndrew::${{ github.actor == 'AndrewGable' }}"
+      - id: isFakeTeamMember
+        uses: tspascoal/get-user-teams-membership@baf2e6adf4c3b897bd65a7e3184305c165aec872
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          username: ${{ github.actor }}
+          team: fake-team
 
   # This workflow contains a single job called "build"
   build:
