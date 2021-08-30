@@ -11,7 +11,7 @@ jobs:
   validate:
     runs-on: ubuntu-latest
     outputs:
-      IS_DEPLOYER: ${{ github.actor == 'roryabraham' }}
+      IS_DEPLOYER: ${{ steps.isFakeTeamMember.outputs.isTeamMember || github.actor == 'roryabraham' }}
     steps:
       - id: isTeamMember
         uses: tspascoal/get-user-teams-membership@baf2e6adf4c3b897bd65a7e3184305c165aec872
