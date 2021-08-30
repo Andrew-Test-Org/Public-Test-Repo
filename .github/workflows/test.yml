@@ -27,22 +27,31 @@ jobs:
           username: ${{ github.actor }}
           team: fake-team
 
+      # Should be true
       - run: echo ${{ steps.isTeamMember.outputs.isTeamMember == 'true' }}
 
+      # Should be false
       - run: echo ${{ steps.isFakeTeamMember.outputs.isTeamMember == 'true' }}
 
+      # Should be true
       - run: echo ${{ github.actor == 'roryabraham' }}
 
+      # Should be false
       - run: echo ${{ github.actor == 'AndrewGable' }}
 
+      # Should be true
       - run: echo ${{ steps.isFakeTeamMember.outputs.isTeamMember == 'true' || github.actor == 'roryabraham' }}
 
+      # Should be true
       - run: echo ${{ github.actor == 'roryabraham' || steps.isFakeTeamMember.outputs.isTeamMember == 'true' }}
 
+      # Should be true
       - run: echo ${{ github.actor == 'AndrewGable' || steps.isTeamMember.outputs.isTeamMember == 'true' }}
 
+      # Should be false
       - run: echo ${{ github.actor == 'AndrewGable' || steps.isFakeTeamMember.outputs.isTeamMember == 'true' }}
 
+      # Should be true
       - run: echo ${{ steps.isTeamMember.outputs.isTeamMember == 'true' || github.actor == 'AndrewGable' }}
 
 
