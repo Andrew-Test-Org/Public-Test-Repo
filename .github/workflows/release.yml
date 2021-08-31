@@ -1,11 +1,11 @@
-name: 'Workflow that executes when a Release is created'
+name: 'Release created workflow'
 
 on:
   release:
     -types: published
 
 jobs:
-  test:
+  release-created-workflow:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
