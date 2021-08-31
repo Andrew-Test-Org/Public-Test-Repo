@@ -10,8 +10,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Set iOS version in ENV
+        run: echo "IOS_VERSION=$(echo '${{ github.event.release.tag_name }}' | tr '-' '.')" >> $GITHUB_ENV
+
       - name: Print ios version
-        run: echo "${{ github.event.release.tag_name }}" | tr '-' '.'
+        run: echo ${{ env.IOS_VERSION }}
 
       - name: Print release event
         run: echo "${{ toJSON(github.event) }}"
