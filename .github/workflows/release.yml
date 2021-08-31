@@ -10,5 +10,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Print ios version
+        run: echo "github.event.tag_name" | tr '-' '.'
+
       - name: Print release event.
-        run: echo ${{ toJson(github.event) }}
+        run: echo "${{ toJson(github.event) }}"
