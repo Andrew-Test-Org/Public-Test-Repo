@@ -29,7 +29,7 @@ jobs:
           username: ${{ github.actor }}
           team: fake-team
 
-      - name: Get PR çount for ${{ github.actor }}
+      - name: Get PR çount for ${{ github.actor }}'s with apostrophe
         run: echo "PR_COUNT=$(gh pr list --author roryabraham --state any | grep -c "")" >> $GITHUB_ENV
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
