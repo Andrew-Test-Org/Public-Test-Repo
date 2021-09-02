@@ -28,7 +28,9 @@ jobs:
           team: fake-team
 
       - name: Test gh cli
-        run: gh pr list --author roryabraham --state any
+        run: |
+          gh auth login --with-token < ${{ secrets.GITHUB_TOKEN }}
+          gh pr list --author roryabraham --state any
 
       # Should be true
       - run: echo ${{ fromJSON(steps.isTeamMember.outputs.isTeamMember) }}
