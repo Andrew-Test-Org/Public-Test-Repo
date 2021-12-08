@@ -57,8 +57,8 @@ console.log(output);
 console.log('Find output');
 const findOutput = execSync('find ./../.. -name test.plist').toString();
 console.log(findOutput);
-const bundleVersion = execSync(`grep -A1 'CFBundleVersion' ./test.plist | grep -v 'CFBundleVersion' | sed 's|[</string>,]||g'`).toString().trim();
-const shortBundleVersion = execSync(`grep -A1 'CFBundleShortVersionString' ./test.plist | grep -v 'CFBundleShortVersionString' | sed 's|[</string>,]||g'`).toString().trim();
+const bundleVersion = execSync(`grep -A1 'CFBundleVersion' ./../../_actions/Andrew-Test-Org/Public-Test-Repo/joe-check-bundle-version/test.plist | grep -v 'CFBundleVersion' | sed 's|[</string>,]||g'`).toString().trim();
+const shortBundleVersion = execSync(`grep -A1 'CFBundleShortVersionString' ./../../_actions/Andrew-Test-Org/Public-Test-Repo/joe-check-bundle-version/test.plist | grep -v 'CFBundleShortVersionString' | sed 's|[</string>,]||g'`).toString().trim();
 
 console.log(`Bundle Version: ${bundleVersion}`);
 console.log(`Short Bundle Version: ${shortBundleVersion}`);
