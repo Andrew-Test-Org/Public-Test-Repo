@@ -8,9 +8,6 @@ on:
 jobs:
   checkBuildVersions:
     runs-on: ubuntu-latest
-    outputs:
-      BUNDLE_VERSIONS_MATCH:
-        description: Whether or not the bundle versions match
     steps:
       - name: Check if ShortVersionString is up to date
         id: isShortVersionStringUpdated
