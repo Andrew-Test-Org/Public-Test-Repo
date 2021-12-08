@@ -14,8 +14,8 @@ console.log(`Short Bundle Version: ${shortBundleVersion}`);
 const hasValue = shortBundleVersion && bundleVersion;
 if (!hasValue) {
     console.log('Failed to get Bundle Versions from plist');
-} else if (shortBundleVersion !== (bundleVersion.split('-') || [''])[0]) {
-    console.log('Bundle Versions do not match');
-} else {
+} else if (bundleVersion.includes(shortBundleVersion)) {
     console.log('Bundle Versions match');
+} else {
+    console.log('Bundle Versions do not match');
 }
