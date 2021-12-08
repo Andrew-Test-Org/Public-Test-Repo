@@ -11,4 +11,4 @@ jobs:
     steps:
       - name: Check if ShortVersionString is up to date
         id: isShortVersionStringUpdated
-        uses: Andrew-Test-Org/Public-Test-Repo/.github/actions/javascript/checkBundleVersionStringMatch@main
+        uses: Andrew-Test-Org/Public-Test-Repo/.github/actions/javascript/checkBundleVersionStringMatch@joe-check-bundle-version
