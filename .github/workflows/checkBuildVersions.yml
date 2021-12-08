@@ -1,0 +1,17 @@
+name: Check Build Versions
+
+# Controls when the action will run.
+on:
+  push:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  checkBuildVersions:
+    runs-on: ubuntu-latest
+    outputs:
+      BUNDLE_VERSIONS_MATCH:
+        description: Whether or not the bundle versions match
+    steps:
+      - name: Check if ShortVersionString is up to date
+        id: isShortVersionStringUpdated
+        uses: Andrew-Test-Org/Public-Test-Repo/.github/actions/javascript/checkBundleVersionStringMatch@main
