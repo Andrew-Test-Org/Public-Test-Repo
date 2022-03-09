@@ -4,20 +4,18 @@ name: Push Workflow
 on:
   push:
 
+env:
+  MY_ENV: 'foo'
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   myJobToWaitFor:
     runs-on: ubuntu-latest
-    outputs:
-      isTrue: 'true'
-      isFalse: 'false'
     steps:
-      - run: echo "Hello world!"
+      - run: echo ${{ env.MY_ENV }}
 
-      - name: Get merged pull request
-        id: getMergedPullRequest
-        uses: actions-ecosystem/action-get-merged-pull-request@8099ed651763e71c70ee59e00251b33ee5c977da
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+      - run: echo ${{ env.MY_ENV }}
+        env:
+          MY_ENV: 'bar'
 
-      - run: echo ${{ toJSON(github) }}
+      - run: echo ${{ env.MY_ENV }}
