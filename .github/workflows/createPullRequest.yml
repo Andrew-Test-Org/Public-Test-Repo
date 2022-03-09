@@ -43,6 +43,7 @@ jobs:
           title: Update version to ${{ github.sha }}
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      #abkgnarbg
       - run: gh pr merge --auto --delete-branch --merge
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
