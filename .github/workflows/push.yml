@@ -18,8 +18,11 @@ jobs:
         with:
           ref: main
 
+      - name: Generate branch name
+        run: echo "BRANCH_NAME=$(botify-bump-version-$(uuidgen))" >> $GITHUB_ENV
+
       - name: Create branch for version-bump pull request
-        run: git checkout -b "botify-bump-version-$(uuidgen)"
+        run: git checkout -b $BRANCH_NAME
 
       - name: Get merged pull request
         id: getMergedPullRequest
