@@ -6,11 +6,8 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  myJobToWaitFor:
+  job:
     runs-on: ubuntu-latest
-    outputs:
-      isTrue: 'true'
-      isFalse: 'false'
     steps:
       - run: echo "Hello world!"
       
@@ -19,15 +16,8 @@ jobs:
           ref: main
 
       - name: Generate branch name
-        run: echo "BRANCH_NAME=$(uuidgen | awk '{print "botify-bump-version-"$1}')" >> $GITHUB_ENV
+        run: echo "BRANCH_NAME=botify-bump-version-$(uuidgen)" >> $GITHUB_ENV
 
       - name: Create branch for version-bump pull request
         run: git checkout -b $BRANCH_NAME
 
-      - name: Get merged pull request
-        id: getMergedPullRequest
-        uses: actions-ecosystem/action-get-merged-pull-request@8099ed651763e71c70ee59e00251b33ee5c977da
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-
-      - run: echo ${{ toJSON(github) }}
