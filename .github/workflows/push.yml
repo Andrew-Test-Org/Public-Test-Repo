@@ -19,7 +19,7 @@ jobs:
           ref: main
 
       - name: Generate branch name
-        run: echo "BRANCH_NAME=$(botify-bump-version-$(uuidgen))" >> $GITHUB_ENV
+        run: echo "BRANCH_NAME=$(uuidgen | awk '{print "botify-bump-version-"$1}')" >> $GITHUB_ENV
 
       - name: Create branch for version-bump pull request
         run: git checkout -b $BRANCH_NAME
