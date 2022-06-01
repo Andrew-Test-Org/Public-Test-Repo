@@ -19,6 +19,8 @@ jobs:
 
       - uses: Andrew-Test-Org/Public-Test-Repo/.github/actions/composite/myCompositeAction@main
 
+      - run: ./dummy.py
+
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo "Hello, world!"
