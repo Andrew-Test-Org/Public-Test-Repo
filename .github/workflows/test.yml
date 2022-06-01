@@ -23,6 +23,8 @@ jobs:
       - name: Run a one-line script
         run: echo "Hello, world!"
 
+      # Create comment for diff, diff
+      # Diff
       - name: Run foo script
         run: ./foo.sh
 
