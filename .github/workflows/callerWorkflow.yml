@@ -5,3 +5,11 @@ on:
 jobs:
   main:
     uses: ./.github/workflows/callableWorkflow.yml
+
+  dependent:
+    runs-on: ubuntu-latest
+    needs: main
+    steps:
+      - name: Alert failure
+        if: ${{ failure() }}
+        run: echo 'Failure!'
