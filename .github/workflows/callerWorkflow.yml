@@ -7,13 +7,15 @@ jobs:
     uses: ./.github/workflows/callableWorkflow.yml
 
   alertSuccess:
+    needs: main
     runs-on: ubuntu-latest
-    if: ${{ success() }}
+    if: ${{ always() && needs.main.result == 'success' }}
     steps:
       - run: echo 'Success!'
 
   alertFailure:
+    needs: main
     runs-on: ubuntu-latest
-    if: ${{ failure() }}
+    if: ${{ always() && needs.main.result == 'failure' }}
     steps:
       - run: echo 'Failure!'
