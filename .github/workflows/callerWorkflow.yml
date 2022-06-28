@@ -1,0 +1,7 @@
+name: 'Caller workflow'
+on:
+  push:
+    branches: [Rory-TestCallableWorkflow]
+jobs:
+  main:
+    uses: ./.github/workflows/callableWorkflow.yml

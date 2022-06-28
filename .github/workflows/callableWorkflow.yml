@@ -1,0 +1,11 @@
+name: 'Callable Workflow'
+
+on:
+  workflow_call:
+
+jobs:
+  main:
+    name: 'Main job in callable workflow'
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo 'Hello world'
