@@ -8,4 +8,4 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: ./.github/actions/composite/myCompositeAction@Rory-NestedCompoundAction
+      - uses: Andrew-Test-Org/Public-Test-Repo/.github/actions/composite/myCompositeAction@Rory-NestedCompoundAction
