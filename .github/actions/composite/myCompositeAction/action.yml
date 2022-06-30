@@ -4,3 +4,11 @@ runs:
   using: 'composite'
   steps:
     - uses: Andrew-Test-Org/Public-Test-Repo/.github/actions/composite/myNestedCompositeAction@Rory-NestedCompoundAction
+
+    - name: Comment on PR
+      uses: actions-ecosystem/action-create-comment@cd098164398331c50e7dfdd0dfa1b564a1873fac
+      with:
+        github_token: ${{ github.token }}
+        number: 302
+        body: |
+          This is a comment to test the use of `github.token` in a composite action
