@@ -1,4 +1,4 @@
-name: 'Caller workflow'
+name: 'Test environment variable in same step'
 on:
   push:
     branches: [Rory-TestEnvVar]
