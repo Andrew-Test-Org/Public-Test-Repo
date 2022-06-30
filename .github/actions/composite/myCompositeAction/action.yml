@@ -3,4 +3,4 @@ description: 'Composite action with nested composite action'
 runs:
   using: 'composite'
   steps:
-    - uses:
+    - uses: Andrew-Test-Org/Public-Test-Repo/.github/actions/composite/myNestedCompositeAction@Rory-NestedCompoundAction
