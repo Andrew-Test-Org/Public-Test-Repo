@@ -7,5 +7,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-        echo "MY_UUID=$(uuidgen)" >> "$GITHUB_ENV"
-        echo ${{ env.MY_UUID }}
+          echo "MY_UUID=$(uuidgen)" >> "$GITHUB_ENV"
+          echo ${{ env.MY_UUID }}
