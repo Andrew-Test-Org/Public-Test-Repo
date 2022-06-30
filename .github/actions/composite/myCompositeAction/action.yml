@@ -1,14 +1,6 @@
-name: 'Hello World'
-description: 'Greet someone'
+name: 'Composite action'
+description: 'Composite action with nested composite action'
 runs:
   using: 'composite'
   steps:
-    # Test uses in composite action
-    - uses: actions/checkout@v2
-
-    # Verify that we have a GH token
-    - run: echo ${{ github.action_path }}
-      shell: bash
-
-    - run: ${{ github.action_path }}/../../../../foo.sh
-      shell: bash
+    - uses:
