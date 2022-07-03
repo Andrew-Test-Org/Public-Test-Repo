@@ -1,0 +1,1 @@
+{"version":3,"sourceRoot":"","sources":["_sass/_main.scss","_sass/_colors.scss"],"names":[],"mappings":"AAEA,GACE,MCHK","sourcesContent":["@use 'colors';\n\nh1 {\n  color: colors.$blue;\n}\n","$blue: #0185FF;\n"],"file":"styles.css"}
