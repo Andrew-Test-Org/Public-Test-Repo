@@ -3,12 +3,13 @@ on:
   push:
     branches:
       - main
+      - Rory-TestJekyllBuild
 
 jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      BUNDLE_GEMFILE: ${{ github.workspace }}/Public-Test-Repo/help/Gemfile
+      BUNDLE_GEMFILE: ${{ github.workspace }}/help/Gemfile
     steps:
       - uses: actions/checkout@v3
 
