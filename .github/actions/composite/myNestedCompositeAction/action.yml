@@ -1,0 +1,6 @@
+name: 'Nested composite action'
+description: 'Composite action that just prints Hello World'
+runs:
+  using: 'composite'
+  steps:
+    - run: echo 'Hello world'

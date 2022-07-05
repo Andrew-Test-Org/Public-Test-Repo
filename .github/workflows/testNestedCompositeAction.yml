@@ -1,0 +1,11 @@
+name: 'Test Nested Composite Action'
+on:
+  push:
+    branches: [Rory-NestedCompoundAction]
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: Andrew-Test-Org/Public-Test-Repo/.github/actions/composite/myCompositeAction@Rory-NestedCompoundAction
