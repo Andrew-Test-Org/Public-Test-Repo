@@ -3,9 +3,12 @@ on:
   push:
     branches: [Rory-TestConcurrency]
 
+concurrency: ${{ github.workflow }}
+
 jobs:
-  runs-on: ubuntu-latest
-  steps:
-    - run: echo 'Starting workflow'
-    - run: sleep 90
-    - run: echo 'Ending workflow'
+  concurrent:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo 'Starting workflow'
+      - run: sleep 60
+      - run: echo 'Ending workflow'
