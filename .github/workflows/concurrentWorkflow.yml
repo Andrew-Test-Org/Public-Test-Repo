@@ -3,7 +3,9 @@ on:
   push:
     branches: [Rory-TestConcurrency]
 
-concurrency: ${{ github.workflow }}
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
 
 jobs:
   concurrent:
