@@ -11,4 +11,4 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Test local action
-        uses: ./.github/actions/composite/myCompositeAction
+        uses: ./.github/actions/composite/myCompositeAction@main
