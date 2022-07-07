@@ -1,7 +1,7 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
 const GitHubUtils = require("../../../libs/GithubUtils");
-const PR_NUMBER = github.context.payload.pull_request.number;
+const PR_NUMBER = github.context.payload.issue.number;
 
 const contributorChecklist = `#### Contributor (PR Author) Checklist
     - [x] I linked the correct issue in the \`### Fixed Issues\` section above
