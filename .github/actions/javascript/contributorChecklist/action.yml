@@ -1,0 +1,9 @@
+name: 'Javascript action'
+description: 'Run a custom Javascript Action'
+inputs:
+  COMMENT:
+    description: Comment to check regex against
+    required: true
+runs:
+  using: 'node12'
+  main: './index.js'
