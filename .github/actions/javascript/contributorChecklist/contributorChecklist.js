@@ -1,4 +1,7 @@
 const core = require('@actions/core');
+require('colors');
+const Diff = require('diff');
+
 const comment = core.getInput('COMMENT', {required: true});
 const checklist = `#### Contributor (PR Author) Checklist
 - [X] I linked the correct issue in the \`### Fixed Issues\` section above
@@ -46,11 +49,16 @@ const checklist = `#### Contributor (PR Author) Checklist
 - [X] If the PR modifies a generic component, I tested and verified that those changes do not break usages of that component in the rest of the App (i.e. if a shared library or component like \`Avatar\` is modified, I verified that \`Avatar\` is working as expected in all cases)
 - [X] If the PR modifies a component related to any of the existing Storybook stories, I tested and verified all stories for that component are still working as expected.`;
 
-let regex = new RegExp(checklist.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'));
-let checklistComplete = regex.test(comment);
+const diff = Diff.diffLines(comment, core.getInput('COMMENT', {required: true}));
 
-if (!checklistComplete) {
-    console.error(`Checklist is not complete`);
+diff.forEach((part) => {
+    // green for additions, red for deletions
+    // grey for common parts
+    const color = part.added ? 'green' : part.removed ? 'red' : 'grey';
+    console.error(part.value[color]);
+});
+
+if (diff) {
     core.setFailed(`Checklist is not complete`);
     return
 }
