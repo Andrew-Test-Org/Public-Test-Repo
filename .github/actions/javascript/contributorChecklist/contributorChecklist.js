@@ -49,7 +49,7 @@ const checklist = `#### Contributor (PR Author) Checklist
 - [X] If the PR modifies a generic component, I tested and verified that those changes do not break usages of that component in the rest of the App (i.e. if a shared library or component like \`Avatar\` is modified, I verified that \`Avatar\` is working as expected in all cases)
 - [X] If the PR modifies a component related to any of the existing Storybook stories, I tested and verified all stories for that component are still working as expected.`;
 
-const diff = Diff.diffLines(comment, core.getInput('COMMENT', {required: true}));
+const diff = Diff.diffLines(checklist, comment);
 
 diff.forEach((part) => {
     // green for additions, red for deletions
@@ -57,10 +57,3 @@ diff.forEach((part) => {
     const color = part.added ? 'green' : part.removed ? 'red' : 'grey';
     console.error(part.value[color]);
 });
-
-if (diff) {
-    core.setFailed(`Checklist is not complete`);
-    return
-}
-
-console.log(`Checklist is completed!`);
