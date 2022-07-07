@@ -10,5 +10,8 @@ runs:
     - run: echo ${{ github.action_path }}
       shell: bash
 
+    - run: echo "This command is only on the Rory-TestLocalAction branch"
+      shell: bash
+
     - run: ${{ github.action_path }}/../../../../foo.sh
       shell: bash
