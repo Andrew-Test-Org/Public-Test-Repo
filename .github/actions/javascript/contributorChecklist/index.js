@@ -15101,7 +15101,7 @@ var __webpack_exports__ = {};
 (() => {
 const core = __nccwpck_require__(4181);
 const github = __nccwpck_require__(2726);
-const GitHubUtils = __nccwpck_require__(5269);
+const GithubUtils = __nccwpck_require__(5269);
 const PR_NUMBER = github.context.payload.issue.number;
 
 const contributorChecklist = `#### Contributor (PR Author) Checklist
@@ -15194,10 +15194,11 @@ const contributorPlusChecklist = `- [x] I verified the correct issue is linked i
 - [x] If the PR modifies a generic component, I tested and verified that those changes do not break usages of that component in the rest of the App (i.e. if a shared library or component like \`Avatar\` is modified, I verified that \`Avatar\` is working as expected in all cases)
 - [x] If the PR modifies a component related to any of the existing Storybook stories, I tested and verified all stories for that component are still working as expected.`;
 
-GitHubUtils.octokit.issues.listComments({
-    owner: GitHubUtils.GITHUB_OWNER,
-    repo: GitHubUtils.APP_REPO,
-    pull_number: PR_NUMBER,
+GithubUtils.octokit.issues.listComments({
+    owner: GithubUtils.GITHUB_OWNER,
+    repo: GithubUtils.APP_REPO,
+    issue_number: PR_NUMBER,
+    per_page: 100,
 }).then(({data}) => {
     let comments = data.map(comment => comment.body).toString()();
     let trimmedComment = comments.replace(/(\s|\r\n|\n|\r)/gm, "");
