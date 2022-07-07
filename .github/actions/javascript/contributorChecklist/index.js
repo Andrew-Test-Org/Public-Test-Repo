@@ -15194,7 +15194,7 @@ const contributorPlusChecklist = `- [x] I verified the correct issue is linked i
 - [x] If the PR modifies a generic component, I tested and verified that those changes do not break usages of that component in the rest of the App (i.e. if a shared library or component like \`Avatar\` is modified, I verified that \`Avatar\` is working as expected in all cases)
 - [x] If the PR modifies a component related to any of the existing Storybook stories, I tested and verified all stories for that component are still working as expected.`;
 
-console.log(issue);
+console.log(github.context.payload);
 
 GitHubUtils.octokit.rest.issues.listComments({
     owner: GitHubUtils.GITHUB_OWNER,
@@ -15202,9 +15202,6 @@ GitHubUtils.octokit.rest.issues.listComments({
     issue_number: issue,
     per_page: 100,
 }).then(({data}) => {
-    console.log(JSON.stringify(github.context.payload.issue))
-
-    console.log(JSON.stringify(data));
     let comments = data.map(comment => comment.body).toString();
     let trimmedComment = comments.replace(/(\s|\r\n|\n|\r)/gm, "");
     let trimmedContributorChecklist = contributorChecklist.replace(/(\s|\r\n|\n|\r)/gm, "")
