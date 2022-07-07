@@ -15102,7 +15102,7 @@ var __webpack_exports__ = {};
 const core = __nccwpck_require__(4181);
 const GitHubUtils = __nccwpck_require__(5269);
 const github = __nccwpck_require__(2726);
-const issue = github.context.payload.issue.number;
+const issue = github.context.payload.issue ? github.context.payload.issue.number : github.context.payload.pull_request.number;
 
 const contributorChecklist = `#### Contributor (PR Author) Checklist
     - [x] I linked the correct issue in the \`### Fixed Issues\` section above
