@@ -13,8 +13,8 @@ const core = __nccwpck_require__(4181);
 const {GitHub, getOctokitOptions} = __nccwpck_require__(5428);
 const {throttling} = __nccwpck_require__(865);
 
-const GITHUB_OWNER = 'Expensify';
-const APP_REPO = 'App';
+const GITHUB_OWNER = 'Andrew-Test-Org';
+const APP_REPO = 'Public-Test-Repo';
 const APP_REPO_URL = 'https://github.com/Expensify/App';
 
 const GITHUB_BASE_URL_REGEX = new RegExp('https?://(?:github\\.com|api\\.github\\.com)');

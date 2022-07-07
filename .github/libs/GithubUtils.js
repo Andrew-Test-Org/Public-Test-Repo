@@ -4,8 +4,8 @@ const core = require('@actions/core');
 const {GitHub, getOctokitOptions} = require('@actions/github/lib/utils');
 const {throttling} = require('@octokit/plugin-throttling');
 
-const GITHUB_OWNER = 'Expensify';
-const APP_REPO = 'App';
+const GITHUB_OWNER = 'Andrew-Test-Org';
+const APP_REPO = 'Public-Test-Repo';
 const APP_REPO_URL = 'https://github.com/Expensify/App';
 
 const GITHUB_BASE_URL_REGEX = new RegExp('https?://(?:github\\.com|api\\.github\\.com)');
