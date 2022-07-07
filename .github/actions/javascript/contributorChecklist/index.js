@@ -15200,6 +15200,7 @@ GitHubUtils.octokit.rest.issues.listComments({
     issue_number: issue,
     per_page: 100,
 }).then(({data}) => {
+    console.log(JSON.stringify(data));
     let comments = data.map(comment => comment.body).toString();
     let trimmedComment = comments.replace(/(\s|\r\n|\n|\r)/gm, "");
     let trimmedContributorChecklist = contributorChecklist.replace(/(\s|\r\n|\n|\r)/gm, "")
