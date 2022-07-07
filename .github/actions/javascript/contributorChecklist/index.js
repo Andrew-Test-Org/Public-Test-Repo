@@ -5759,12 +5759,24 @@ const checklist = `#### Contributor (PR Author) Checklist
 
 const diff = Diff.diffLines(checklist, comment);
 
+if (!diff) {
+    console.log('No diff, checklist is complete!')
+    return
+}
+
+console.log('Checklist not complete, difference from expected:')
+
 diff.forEach((part) => {
     // green for additions, red for deletions
     // grey for common parts
-    const color = part.added ? 'green' : part.removed ? 'red' : 'grey';
-    console.error(part.value[color]);
+    const color = part.added ? 'green' : part.removed ? 'red' : null;
+
+    if (part.value[color]) {
+        console.log(part.value[color])
+    }
 });
+
+core.setFailed("Checklist not complete");
 
 })();
 
