@@ -4,7 +4,7 @@ on:
   issue_comment:
     types: [created, edited]
   pull_request:
-    types: [opened, closed, synchronize]
+    types: [opened, edited]
 
 jobs:
   checklist:
