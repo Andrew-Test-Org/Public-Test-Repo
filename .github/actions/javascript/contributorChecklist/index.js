@@ -2146,7 +2146,7 @@ var __webpack_exports__ = {};
 const core = __nccwpck_require__(181);
 const comment = core.getInput('COMMENT', {required: true});
 const checklist = `#### Contributor (PR Author) Checklist
-- [ ] I linked the correct issue in the \`### Fixed Issues\` section above
+- [x] I linked the correct issue in the \`### Fixed Issues\` section above
 - [x] I wrote clear testing steps that cover the changes made in this PR
     - [x] I added steps for local testing in the \`Tests\` section
     - [x] I added steps for Staging and/or Production testing in the \`QA steps\` section
@@ -2190,9 +2190,11 @@ const checklist = `#### Contributor (PR Author) Checklist
     - [x] The style can’t be created with an existing [StyleUtils](https://github.com/Expensify/App/blob/main/src/styles/StyleUtils.js) function (i.e. \`StyleUtils.getBackgroundAndBorderStyle(themeColors.componentBG\`)
 - [x] If the PR modifies a generic component, I tested and verified that those changes do not break usages of that component in the rest of the App (i.e. if a shared library or component like \`Avatar\` is modified, I verified that \`Avatar\` is working as expected in all cases)
 - [x] If the PR modifies a component related to any of the existing Storybook stories, I tested and verified all stories for that component are still working as expected.`;
-let checklistComplete = comment.includes(checklist);
 
-console.log(`comment: ${comment}`);
+let trimmedComment = comment.replace(/(\s|\r\n|\n|\r)/gm, "");
+let trimmedChecklist = checklist.replace(/(\s|\r\n|\n|\r)/gm, "")
+
+let checklistComplete = trimmedComment.includes(trimmedChecklist);
 
 if (!checklistComplete) {
     console.error(`Checklist is not complete`);
