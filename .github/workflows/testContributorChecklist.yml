@@ -11,3 +11,5 @@ jobs:
     steps:
       - name: contributorChecklist.js
         uses: Andrew-Test-Org/Public-Test-Repo/.github/actions/javascript/contributorChecklist@main
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
