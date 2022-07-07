@@ -1,5 +1,6 @@
 const core = require('@actions/core');
 const GitHubUtils = require("../../../libs/GithubUtils");
+const github = require('@actions/github');
 const issue = github.context.payload.issue.number;
 
 const contributorChecklist = `#### Contributor (PR Author) Checklist
