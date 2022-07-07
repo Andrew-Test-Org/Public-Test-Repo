@@ -5711,6 +5711,7 @@ __nccwpck_require__(201);
 const Diff = __nccwpck_require__(8354);
 
 const comment = core.getInput('COMMENT', {required: true});
+console.log(JSON.stringify(comment));
 const checklist = `#### Contributor (PR Author) Checklist
 - [X] I linked the correct issue in the \`### Fixed Issues\` section above
 - [X] I wrote clear testing steps that cover the changes made in this PR
@@ -5764,7 +5765,7 @@ if (diff.length === 1) {
     return
 }
 
-console.log(`Checklist not complete, difference from expected: \n${diff[1].value}\n${diff[2].value}`)
+console.log(`Checklist not filled out, difference from expected: \n${diff[1].value}\n${diff[2].value}`)
 core.setFailed("Checklist not complete");
 
 })();
