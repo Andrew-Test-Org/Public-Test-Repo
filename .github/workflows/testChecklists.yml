@@ -9,7 +9,6 @@ on:
 jobs:
   checklist:
     runs-on: ubuntu-latest
-    if: github.event.issue.pull_request
     steps:
       - name: contributorChecklist.js
         uses: Andrew-Test-Org/Public-Test-Repo/.github/actions/javascript/contributorChecklist@main
