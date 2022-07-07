@@ -4,7 +4,10 @@
   "dependencies": {
     "@actions/core": "^1.9.0",
     "@actions/github": "^5.0.3",
+    "@octokit/plugin-throttling": "^3.7.0",
     "colors": "^1.4.0",
-    "diff": "^5.1.0"
+    "diff": "^5.1.0",
+    "lodash": "^4.17.21",
+    "underscore": "^1.13.4"
   }
 }
