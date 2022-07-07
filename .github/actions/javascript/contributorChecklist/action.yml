@@ -1,9 +1,5 @@
-name: 'Javascript action'
-description: 'Run a custom Javascript Action'
-inputs:
-  COMMENT:
-    description: Comment to check regex against
-    required: true
+name: 'Contributor Checklist Test'
+description: 'Verifies that both PR checklists are filled out'
 runs:
   using: 'node12'
   main: './index.js'
