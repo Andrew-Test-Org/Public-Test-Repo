@@ -1,0 +1,16 @@
+name: Test continue-on-error
+
+on:
+  push:
+    branches: [Rory-ContinueOnError]
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: This step will fail
+        run: exit 1
+        continue-on-error: true
+
+      - name: This step should run anyways
+        run: echo 'Hello world!'
