@@ -4,7 +4,6 @@ on:
   workflow_call:
     secrets:
       RORY_TOKEN:
-        required: true
 jobs:
   main:
     runs-on: ubuntu-latest
