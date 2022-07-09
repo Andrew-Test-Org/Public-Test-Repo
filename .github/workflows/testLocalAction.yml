@@ -1,8 +1,8 @@
-name: Test Local Action
+name: Test JQ
 
 on:
   push:
-    branches: [Rory-TestLocalAction]
+    branches: [Rory-TestJQ]
 
 jobs:
   checklist:
@@ -10,5 +10,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Test local action
-        uses: ./.github/actions/composite/myCompositeAction
+      - run: echo '::set-output name=PR_LIST::["9724","9626","9720","9350","9717","9714","9700","9682","9692","9690","9684","9672","9676","9674","9656","9619","9647","9643","9645","9639","9637","9632","9616","9610","9569","9563","9553","9554","9574","7702","9534","9493","9469","9558","9550","9405","8549","9512","9536","9507","9549","9218"]'
+
+      - run: echo "- \#$(echo "$PR_LIST" | jq -r 'sort | join("\r\n- \#")')"
