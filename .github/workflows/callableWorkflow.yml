@@ -3,13 +3,13 @@ name: Callable Workflow
 on:
   workflow_call:
     secrets:
-      RORY_TOKEN:
+      RENAMED_SECRET:
 jobs:
   main:
     runs-on: ubuntu-latest
     steps:
       - run: echo 'Callable workflow executed'
 
-      - run: gh pr comment 306 --body "Test comment"
+      - run: gh pr comment https://github.com/Andrew-Test-Org/Public-Test-Repo/pull/306 --body "Test comment"
         env:
-          GH_TOKEN: ${{ secrets.RORY_TOKEN }}
+          GH_TOKEN: ${{ secrets.RENAMED_SECRET }}
