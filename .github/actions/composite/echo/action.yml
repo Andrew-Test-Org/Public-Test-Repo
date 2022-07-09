@@ -1,0 +1,13 @@
+name: 'Echo'
+description: 'Echo an input'
+
+inputs:
+  INPUT:
+    description: A string input to echo
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    - run: echo "${{ inputs.INPUT }}"
+      shell: bash
