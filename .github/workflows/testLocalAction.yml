@@ -15,7 +15,7 @@ jobs:
 
       - id: createReleaseBody
         run: |
-          $RELEASE_BODY="- #$(echo "${{ steps.getPRList.outputs.PR_LIST }}" | jq -r 'sort | join("\r\n- #")')"
+          RELEASE_BODY="- #$(echo "${{ steps.getPRList.outputs.PR_LIST }}" | jq -r 'sort | join("\r\n- #")')"
           echo "::set-output name=RELEASE_BODY::$RELEASE_BODY"
 
       - uses: ./.github/actions/composite/echo
