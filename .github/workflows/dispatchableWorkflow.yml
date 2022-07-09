@@ -4,4 +4,4 @@ on:
   workflow_dispatch:
 jobs:
   triggerCallableWorkflow:
-    uses: ./.github/workflows/callableWorkflow.yml
+    uses: Andrew-Test-Org/Public-Test-Repo/.github/workflows/callableWorkflow.yml@main
