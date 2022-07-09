@@ -8,4 +8,4 @@ jobs:
 
       - run: gh pr comment 306 --body "Test comment"
         env:
-          GITHUB_TOKEN: ${{ secrets.RORY_TOKEN }}
+          GH_TOKEN: ${{ secrets.RORY_TOKEN }}
