@@ -5,3 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo 'Callable workflow executed'
+
+      - run: gh pr comment 306 --body "Test comment"
+        env:
+          GITHUB_TOKEN: ${{ secrets.RORY_TOKEN }}
