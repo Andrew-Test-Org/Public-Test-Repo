@@ -15,4 +15,4 @@ jobs:
 
       - uses: ./.github/actions/composite/echo
         with:
-          INPUT: "- #${{ join(steps.getPRList.outputs.PR_LIST, '\r\n- #') }}"
+          INPUT: "- #${{ join(fromJSON(steps.getPRList.outputs.PR_LIST), '\r\n- #') }}"
