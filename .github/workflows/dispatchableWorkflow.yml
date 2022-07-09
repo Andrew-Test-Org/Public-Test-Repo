@@ -1,0 +1,7 @@
+name: Dispatchable Workflow
+on:
+  workflow_call:
+  workflow_dispatch:
+jobs:
+  triggerCallableWorkflow:
+    uses: ./.github/workflows/callableWorkflow.yml
