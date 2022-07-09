@@ -5,3 +5,5 @@ on:
 jobs:
   triggerCallableWorkflow:
     uses: Andrew-Test-Org/Public-Test-Repo/.github/workflows/callableWorkflow.yml@main
+    secrets:
+      RORY_TOKEN: ${{ secrets.RORY_TOKEN }}
