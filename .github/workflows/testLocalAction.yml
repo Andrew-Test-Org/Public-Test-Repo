@@ -8,10 +8,5 @@ jobs:
   checklist:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-
-      - name: Look at current git branch
-        run: git branch
-
       - name: Test local action
         uses: Andrew-Test-Org/Public-Test-Repo/.github/actions/composite/myCompositeAction@main
