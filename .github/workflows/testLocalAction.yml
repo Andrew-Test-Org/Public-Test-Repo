@@ -13,7 +13,10 @@ jobs:
       - run: echo '::set-output name=PR_LIST::["9724","9626","9720","9350","9717","9714","9700","9682","9692","9690","9684","9672","9676","9674","9656","9619","9647","9643","9645","9639","9637","9632","9616","9610","9569","9563","9553","9554","9574","7702","9534","9493","9469","9558","9550","9405","8549","9512","9536","9507","9549","9218"]'
         id: getPRList
 
+      - id: createReleaseBody
+        run: |
+          echo "::set-output name=RELEASE_BODY::- #$(echo "${{ steps.getPRList.outputs.PR_LIST }}" | jq -r 'sort | join("\r\n- #")')"
+
       - uses: ./.github/actions/composite/echo
         with:
-          INPUT: |
-            echo "- #$(echo "${{ steps.getPRList.outputs.PR_LIST }}" | jq -r 'sort | join("\r\n- #")')"
+          INPUT: ${{ steps.createReleaseBody.outputs.RELEASE_BODY }}
