@@ -1,0 +1,21 @@
+name: "Test"
+
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  test1:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo 'Test'
+
+  test2:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo 'Test 2'
+
+  test3:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo 'Test 3'
