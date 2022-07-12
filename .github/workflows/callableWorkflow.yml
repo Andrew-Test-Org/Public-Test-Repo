@@ -11,7 +11,7 @@ jobs:
       CONDITION: ${{ steps.check.outputs.CONDITION }}
     steps:
       - id: check
-        run: echo "::set-output name=CONDITION::true"
+        run: echo "::set-output name=CONDITION::'true'"
 
   main:
     runs-on: ubuntu-latest
