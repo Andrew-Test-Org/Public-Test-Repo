@@ -16,7 +16,7 @@ jobs:
   main:
     runs-on: ubuntu-latest
     needs: pre
-    if: ${{ fromJSON(needs.pre.outputs.camelCaseCondition) }}
+    if: needs.pre.outputs.camelCaseCondition
     steps:
       - run: echo 'Callable workflow executed'
 
