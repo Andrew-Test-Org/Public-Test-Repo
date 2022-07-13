@@ -3,7 +3,20 @@ on:
   workflow_call:
   workflow_dispatch:
 jobs:
+  pre:
+    runs-on: ubuntu-latest
+    outputs:
+      CONDITION: ${{ steps.checkOne.outputs.CHECK_ONE && steps.checkTwo.outputs.CHECK_TWO }}
+    steps:
+      - id: checkOne
+        run: echo "::set-output name=CHECK_ONE::${{ true }}"
+
+      - id: checkTwo
+        run: echo "::set-output name=CHECK_TWO::${{ true }}"
+
   triggerCallableWorkflow:
+    needs: pre
+    if: ${{ fromJSON(needs.pre.outputs.CONDITION) }}
     uses: Andrew-Test-Org/Public-Test-Repo/.github/workflows/callableWorkflow.yml@main
     secrets:
       RENAMED_SECRET: ${{ secrets.RORY_TOKEN }}

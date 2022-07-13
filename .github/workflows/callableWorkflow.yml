@@ -4,15 +4,8 @@ on:
   workflow_call:
     secrets:
       RENAMED_SECRET:
-jobs:
-  pre:
-    runs-on: ubuntu-latest
-    outputs:
-      camelCaseCondition: ${{ steps.check.outputs.CONDITION }}
-    steps:
-      - id: check
-        run: echo "::set-output name=CONDITION::${{ true && true }}"
 
+jobs:
   main:
     runs-on: ubuntu-latest
     needs: pre
