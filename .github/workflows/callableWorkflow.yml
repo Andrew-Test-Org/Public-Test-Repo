@@ -6,8 +6,22 @@ on:
       RENAMED_SECRET:
 
 jobs:
+  validateActor:
+    runs-on: ubuntu-latest
+    outputs:
+      HAS_WRITE_ACCESS: ${{ contains(fromJSON(["write", "admin"]), steps.getUserPermissions.outputs.PERMISSION) }}
+    steps:
+      - name: Get user permissions
+        id: getUserPermissions
+        run: echo "::set-output name=PERMISSION::$(gh api /repos/Expensify/App/collaborators/roryabraham/permission | jq -r '.permission')"
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
   main:
     runs-on: ubuntu-latest
+    needs: validateActor
+    if: ${{ fromJSON(needs.validateActor.outputs.HAS_WRITE_ACCESS) }}
+
     steps:
       - run: echo 'Callable workflow executed'
 
