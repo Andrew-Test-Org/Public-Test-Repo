@@ -19,7 +19,7 @@ jobs:
         run: |
           echo "$GITHUB_CONTEXT"
       - env:
-          GITHUB_CONTEXT: ${{contains(github.event.comment.body, '- [x]'))}}
+          GITHUB_CONTEXT: ${{ contains(github.event.comment.body, '- [x]') }}
         run: |
           echo "$GITHUB_CONTEXT"
   checklist:
