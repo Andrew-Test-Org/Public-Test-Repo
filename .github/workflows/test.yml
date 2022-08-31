@@ -10,7 +10,10 @@ jobs:
   echo:
     runs-on: ubuntu-latest
     steps:
-      - run: echo toJSON(github.event)
+      - env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: |
+          echo "$GITHUB_CONTEXT"
   checklist:
     runs-on: ubuntu-latest
     if: (${{ github.event.issue.pull_request }} && github.event == 'issue_comment' && contains(github.event.issue_comment.comment.body, '- [x]'))
