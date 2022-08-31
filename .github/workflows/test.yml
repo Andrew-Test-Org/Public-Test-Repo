@@ -10,10 +10,11 @@ jobs:
   echo:
     runs-on: ubuntu-latest
     steps:
-      - env:
-          GITHUB_CONTEXT: ${{ github }}
-        run: |
-          echo "$GITHUB_CONTEXT"
+    - name: GitHub context
+      env:
+        GITHUB_CONTEXT: ${{ toJson(github) }}
+      run: |
+        echo "$GITHUB_CONTEXT"
   checklist:
     runs-on: ubuntu-latest
     if: ${{ github.event.issue.pull_request && github.event_name == 'issue_comment' && contains(github.event.comment.body, '- [') || github.event_name == 'pull_request_review_comment' && contains(github.event.pull_request_review_comment.body, '- [') || github.event_name == 'pull_request' && contains(github.event.pull_request.body, '- [') }}
