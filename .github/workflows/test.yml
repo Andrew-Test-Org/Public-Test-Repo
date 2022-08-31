@@ -15,12 +15,12 @@ jobs:
         run: |
           echo "$GITHUB_CONTEXT"
       - env:
-          GITHUB_CONTEXT: ${{ github.event_name == 'issue_comment' && contains(github.event.comment.body, '- [x]') }} || ${{ github.event_name == 'pull_request_review_comment' }} && ${{ contains(github.event.pull_request_review_comment.body, '- [x]') }} || ${{ github.event_name == 'pull_request' }} && ${{ contains(github.event.pull_request.body, '- [x]') }}
+          GITHUB_CONTEXT: ${{ github.event_name == 'issue_comment' && contains(github.event.comment.body, '- [x]') || github.event_name == 'pull_request_review_comment' && contains(github.event.pull_request_review_comment.body, '- [x]') || github.event_name == 'pull_request' && contains(github.event.pull_request.body, '- [x]') }}
         run: |
           echo "$GITHUB_CONTEXT"
   checklist:
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'issue_comment' && contains(github.event.comment.body, '- [x]') }} || ${{ github.event_name == 'pull_request_review_comment' }} && ${{ contains(github.event.pull_request_review_comment.body, '- [x]') }} || ${{ github.event_name == 'pull_request' }} && ${{ contains(github.event.pull_request.body, '- [x]') }}
+    if: ${{ github.event_name == 'issue_comment' && contains(github.event.comment.body, '- [x]') || github.event_name == 'pull_request_review_comment' && contains(github.event.pull_request_review_comment.body, '- [x]') || github.event_name == 'pull_request' && contains(github.event.pull_request.body, '- [x]') }}
     steps:
       - run: |
           echo A comment on PR $NUMBER
