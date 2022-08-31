@@ -17,7 +17,7 @@ jobs:
         echo "$GITHUB_CONTEXT"
   checklist:
     runs-on: ubuntu-latest
-    if: ${{ github.event.issue.pull_request && github.event_name == 'issue_comment' && contains(github.event.comment.body, '- [') || github.event_name == 'pull_request_review_comment' && contains(github.comment.body, '- [') || github.event_name == 'pull_request' && contains(github.event.pull_request.body, '- [') }}
+    if: ${{ github.event.issue.pull_request && github.event_name == 'issue_comment' && contains(github.event.comment.body, '- [') || github.event_name == 'pull_request_review_comment' && contains(github.event.comment.body, '- [') || github.event_name == 'pull_request' && contains(github.event.pull_request.body, '- [') }}
     steps:
       - run: |
           echo A comment on PR $NUMBER
