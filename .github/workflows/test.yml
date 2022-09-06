@@ -13,7 +13,7 @@ jobs:
     - name: GitHub context
       env:
         GITHUB_CONTEXT: ${{ toJson(github) }}
-        ONE: ${{ github.actor != 'OSBotify' || (github.event.issue.pull_request && github.event_name == 'issue_comment' && contains(github.event.comment.body, '- [') || github.event_name == 'pull_request_review' && contains(github.event.review.body, '- [') || github.event_name == 'pull_request' && contains(github.event.pull_request.body, '- [')) }}
+        ONE: ${{ github.actor != 'OSBotify' || (contains(github.event.issue.pull_request.url, 'http') && github.event_name == 'issue_comment' && contains(github.event.comment.body, '- [') || github.event_name == 'pull_request_review' && contains(github.event.review.body, '- [') || github.event_name == 'pull_request' && contains(github.event.pull_request.body, '- [')) }}
         TWO: ${{ (github.event.issue.pull_request && github.event_name == 'issue_comment' && contains(github.event.comment.body, '- [') || github.event_name == 'pull_request_review' && contains(github.event.review.body, '- [') || github.event_name == 'pull_request' && contains(github.event.pull_request.body, '- [')) }}
         THREE: ${{ contains(github.event.issue.pull_request.url, 'http') && github.event_name == 'issue_comment' && contains(github.event.comment.body, '- [') }}
         FOUR: ${{ github.event_name == 'pull_request_review' && contains(github.event.review.body, '- [') }}
@@ -25,9 +25,7 @@ jobs:
         echo "$GITHUB_CONTEXT" "$ONE" "$TWO" "$THREE" "$FOUR" "$FIVE" "$SIX" "$SEVEN" "$EIGHT"
   checklist:
     runs-on: ubuntu-latest
-    if: github.actor != 'OSBotify' || (github.event.issue.pull_request && github.event_name == 'issue_comment' && contains(github.event.comment.body, '- [') || github.event_name == 'pull_request_review' && contains(github.event.review.body, '- [') || github.event_name == 'pull_request' && contains(github.event.pull_request.body, '- ['))
+    if: github.actor != 'OSBotify' || (contains(github.event.issue.pull_request.url, 'http') && github.event_name == 'issue_comment' && contains(github.event.comment.body, '- [') || github.event_name == 'pull_request_review' && contains(github.event.review.body, '- [') || github.event_name == 'pull_request' && contains(github.event.pull_request.body, '- ['))
     steps:
       - run: |
-          echo A comment on PR $NUMBER
-        env:
-          NUMBER: ${{ github.actor != 'OSBotify' || (contains(github.event.issue.pull_request.url, 'https') && github.event_name == 'issue_comment' && contains(github.event.comment.body, '- [') || github.event_name == 'pull_request_review' && contains(github.event.review.body, '- [') || github.event_name == 'pull_request' && contains(github.event.pull_request.body, '- [')) }}
+          echo "Ping"
