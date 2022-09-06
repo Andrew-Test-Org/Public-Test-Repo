@@ -18,8 +18,11 @@ jobs:
         THREE: ${{ github.event.issue.pull_request && github.event_name == 'issue_comment' && contains(github.event.comment.body, '- [') }}
         FOUR: ${{ github.event_name == 'pull_request_review' && contains(github.event.review.body, '- [') }}
         FIVE: ${{ github.event_name == 'pull_request' && contains(github.event.pull_request.body, '- [') }}
+        SIX: ${{ github.event.issue.pull_request }}
+        SEVEN: ${{ github.event_name == 'issue_comment' }}
+        EIGHT: ${{ contains(github.event.comment.body, '- [') }}
       run: |
-        echo "$GITHUB_CONTEXT" "$ONE" "$TWO" "$THREE" "$FOUR" "$FIVE"
+        echo "$GITHUB_CONTEXT" "$ONE" "$TWO" "$THREE" "$FOUR" "$FIVE" "$SIX" "$SEVEN" "$EIGHT"
   checklist:
     runs-on: ubuntu-latest
     if: github.actor != 'OSBotify' || (github.event.issue.pull_request && github.event_name == 'issue_comment' && contains(github.event.comment.body, '- [') || github.event_name == 'pull_request_review' && contains(github.event.review.body, '- [') || github.event_name == 'pull_request' && contains(github.event.pull_request.body, '- ['))
