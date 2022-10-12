@@ -1,31 +1,27 @@
 name: "Test"
 
 on:
-  issue_comment:
-  pull_request_review:
-  pull_request:
-    types: [opened, edited, synchronize]
+  workflow_dispatch:
 
 jobs:
   echo:
     runs-on: ubuntu-latest
     steps:
-    - name: GitHub context
-      env:
-        GITHUB_CONTEXT: ${{ toJson(github) }}
-        ONE: ${{ github.actor != 'OSBotify' && (contains(github.event.issue.pull_request.url, 'http') && github.event_name == 'issue_comment' && contains(github.event.comment.body, '- [') || github.event_name == 'pull_request_review' && contains(github.event.review.body, '- [') || github.event_name == 'pull_request' && contains(github.event.pull_request.body, '- [')) }}
-        TWO: ${{ (contains(github.event.issue.pull_request.url, 'http') && github.event_name == 'issue_comment' && contains(github.event.comment.body, '- [') || github.event_name == 'pull_request_review' && contains(github.event.review.body, '- [') || github.event_name == 'pull_request' && contains(github.event.pull_request.body, '- [')) }}
-        THREE: ${{ contains(github.event.issue.pull_request.url, 'http') && github.event_name == 'issue_comment' && contains(github.event.comment.body, '- [') }}
-        FOUR: ${{ github.event_name == 'pull_request_review' && contains(github.event.review.body, '- [') }}
-        FIVE: ${{ github.event_name == 'pull_request' && contains(github.event.pull_request.body, '- [') }}
-        SIX: ${{ contains(github.event.issue.pull_request.url, 'http') }}
-        SEVEN: ${{ github.event_name == 'issue_comment' }}
-        EIGHT: ${{ contains(github.event.comment.body, '- [') }}
-      run: |
-        echo "$GITHUB_CONTEXT" "$ONE" "$TWO" "$THREE" "$FOUR" "$FIVE" "$SIX" "$SEVEN" "$EIGHT"
-  checklist:
-    runs-on: ubuntu-latest
-    if: github.actor != 'OSBotify' && (contains(github.event.issue.pull_request.url, 'http') && github.event_name == 'issue_comment' && contains(github.event.comment.body, '- [') || github.event_name == 'pull_request_review' && contains(github.event.review.body, '- [') || github.event_name == 'pull_request' && contains(github.event.pull_request.body, '- ['))
-    steps:
-      - run: |
-          echo "Ping"
+      - name: Set version
+        run: echo "VERSION=1.2.12-4" >> "$GITHUB_ENV"
+
+      - name: 'Test slack message'
+        uses: 8398a7/action-slack@v3
+        with:
+          status: custom
+          custom_payload: |
+            {
+              channel: '#andrew-test',
+              attachments: [{
+                color: 'good',
+                text: `🎉️ Successfully deployed <https://github.com/Expensify/App/releases/tag/${{ env.VERSION }}|${{ env.VERSION }}> to production 🎉️`,
+              }]
+            }
+          env:
+            GITHUB_TOKEN: ${{ github.token }}
+            SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
