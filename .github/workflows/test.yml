@@ -22,6 +22,6 @@ jobs:
                 text: `🎉️ Successfully deployed <https://github.com/Expensify/App/releases/tag/${{ env.VERSION }}|${{ env.VERSION }}> to production 🎉️`,
               }]
             }
-          env:
-            GITHUB_TOKEN: ${{ github.token }}
-            SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
