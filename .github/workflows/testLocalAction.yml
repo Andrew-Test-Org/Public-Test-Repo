@@ -8,7 +8,5 @@ jobs:
   checklist:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-
       - name: Test local action
-        uses: ./.github/actions/composite/myCompositeAction
+        uses: Andrew-Test-Org/Public-Test-Repo/.github/actions/composite/myCompositeAction@main
