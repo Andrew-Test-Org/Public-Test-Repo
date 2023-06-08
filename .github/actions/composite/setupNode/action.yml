@@ -9,6 +9,14 @@ runs:
         node-version: 16.15.1
         cache: npm
 
+    - shell: bash
+      run: |
+        if [ -z ${CI+x} ]; then
+          echo 'not CI';
+        else
+          echo 'CI';
+        fi
+
     - id: cache-node-modules
       uses: actions/cache@v3
       with:
