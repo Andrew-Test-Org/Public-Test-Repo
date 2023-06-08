@@ -7,21 +7,6 @@ jobs:
   echo:
     runs-on: ubuntu-latest
     steps:
-      - name: Set version
-        run: echo "VERSION=1.2.12-4" >> "$GITHUB_ENV"
+      - uses: actions/checkout@v3
 
-      - name: 'Test slack message'
-        uses: 8398a7/action-slack@v3
-        with:
-          status: custom
-          custom_payload: |
-            {
-              channel: '#andrew-test',
-              attachments: [{
-                color: 'good',
-                text: `🎉️ Successfully deployed <https://github.com/Expensify/App/releases/tag/${{ env.VERSION }}|${{ env.VERSION }}> to production 🎉️`,
-              }]
-            }
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
+      - uses: Andrew-Test-Org/Public-Test-Repo/.github/actions/composite/setupNode@main
