@@ -8,6 +8,6 @@
     "colors": "^1.4.0",
     "diff": "^5.1.0",
     "lodash": "^4.17.21",
-    "underscore": "^1.13.5"
+    "underscore": "^1.13.6"
   }
 }
