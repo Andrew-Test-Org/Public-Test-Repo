@@ -3,6 +3,8 @@ name: "Test"
 on:
   workflow_dispatch:
 
+concurrency: test-gh-concurrency
+
 jobs:
   echo:
     runs-on: ubuntu-latest
