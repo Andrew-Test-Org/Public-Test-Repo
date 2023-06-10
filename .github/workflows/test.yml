@@ -9,4 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - shell: bash
+        run: sleep 60
+
       - uses: Andrew-Test-Org/Public-Test-Repo/.github/actions/composite/setupNode@main
