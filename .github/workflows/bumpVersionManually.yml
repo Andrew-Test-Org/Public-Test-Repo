@@ -1,0 +1,20 @@
+on: workflow_dispatch
+jobs:
+  bumpVersion:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: main
+
+      - run: npm version patch
+
+      - run: git push origin main
+
+      - run: |
+          git config user.name OSBotifyg
+          git config user.email infra+osbotify@expensify.com
+          git fetch origin staging
+          git branch -D staging
+          git checkout -b staging
+          git push --force origin staging
