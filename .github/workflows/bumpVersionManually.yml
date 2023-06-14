@@ -12,8 +12,8 @@ jobs:
       - run: git push origin main
 
       - run: |
-          git config user.name OSBotifyg
-          git config user.email infra+osbotify@expensify.com
+          git config user.name roryabrahamtest
+          git config user.email roryabrahamtest@gmail.com
           git fetch origin staging
           git branch -D staging
           git checkout -b staging
