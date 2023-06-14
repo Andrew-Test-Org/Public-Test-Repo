@@ -7,13 +7,15 @@ jobs:
         with:
           ref: main
 
+      - run: |
+          git config user.name roryabrahamtest
+          git config user.email roryabrahamtest@gmail.com
+
       - run: npm version patch
 
       - run: git push origin main
 
       - run: |
-          git config user.name roryabrahamtest
-          git config user.email roryabrahamtest@gmail.com
           git fetch origin staging
           git branch -D staging
           git checkout -b staging
