@@ -7,6 +7,10 @@ jobs:
         with:
           ref: main
 
+      - uses: webfactory/ssh-agent@v0.8.0
+        with:
+          ssh-private-key: ${{ secrets.RORY_TEST_SSH_KEY }}
+
       - run: |
           git config user.name roryabrahamtest
           git config user.email roryabrahamtest@gmail.com
