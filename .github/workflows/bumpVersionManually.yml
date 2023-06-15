@@ -13,7 +13,7 @@ jobs:
 
       - run: npm version patch
 
-      - run: git push --force origin main
+      - run: git push origin main
 
       - run: |
           git fetch origin staging
