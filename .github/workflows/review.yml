@@ -6,4 +6,4 @@ jobs:
   checklist:
     runs-on: ubuntu-latest
     steps:
-      - run: echo ${{ github.run_number }}
+      - run: echo ${{ github.run_attempt }}
