@@ -11,7 +11,7 @@ jobs:
 
       - id: getPRTitle
         run: echo "pr_title=$(gh pr view 317 --json 'title' --jq '.title')" >> "$GITHUB_OUTPUT"
-        with:
+        env:
           GITHUB_TOKEN: ${{ github.token }}
 
       - run: echo ${{ steps.getPRTitle.outputs.pr_title }}
