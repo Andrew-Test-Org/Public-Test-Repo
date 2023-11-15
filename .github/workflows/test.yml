@@ -14,4 +14,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
 
-      - run: echo ${{ steps.getPRTitle.outputs.pr_title }}
+      - run: echo ${{ toJSON(steps.getPRTitle.outputs.pr_title) }}
