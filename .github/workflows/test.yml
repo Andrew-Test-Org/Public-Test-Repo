@@ -8,4 +8,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: echo ${{ toJSON('This is an issue title with \'single quotes\' and "double quotes" and also this character ^') }}
+
+      - id: getPRTitle
+        run: echo "pr_title=$(gh pr view 317 --json 'title' --jq '.title')" >> "$GITHUB_OUTPUT"
+        with:
+          GITHUB_TOKEN: ${{ github.token }}
+
+      - run: echo ${{ steps.getPRTitle.outputs.pr_title }}
