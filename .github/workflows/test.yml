@@ -7,6 +7,11 @@ jobs:
   echo:
     runs-on: ubuntu-latest-xl
     steps:
-      - uses: actions/checkout@v3
-      - shell: bash
-        run: sleep 60
+      - run: |
+          if gh api /orgs/Andrew-Test-Org/teams/rory-custom-team/memberships/${{ github.actor }} --silent; then
+            echo "IS_DEPLOYER=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "IS_DEPLOYER=false" >> "$GITHUB_OUTPUT"
+          fi
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
