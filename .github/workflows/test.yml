@@ -5,7 +5,7 @@ on:
 
 jobs:
   echo:
-    runs-on: ubuntu-latest-xl
+    runs-on: ubuntu-latest
     steps:
       - run: |
           if gh api /orgs/Andrew-Test-Org/teams/rory-custom-team/memberships/${{ github.actor }} --silent; then
