@@ -1,12 +1,19 @@
 name: "Test"
 
 on:
-  push:
+  pull_request:
 
 jobs:
   echo:
-    runs-on: ubuntu-latest-xl
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - shell: bash
-        run: sleep 60
+      - run: echo ${{ env.CUSTOM_PAYLOAD }}
+        env:
+          CUSTOM_PAYLOAD: |
+            {
+              channel: '#expensify-open-source',
+              attachments: toJSON([{
+                color: '#DB4545',
+                text: '💥 We have found a New Expensify Deploy Blocker, if you have any idea which PR could be causing this, please comment in the issue: <${{ github.event.pull_request.html_url }}|${{ github.event.pull_request.title }}>',
+              }])
+            }
