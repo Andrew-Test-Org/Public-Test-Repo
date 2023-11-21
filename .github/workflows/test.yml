@@ -8,7 +8,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo ${{ toJSON([{
-            color: '#DB4545',
-            text: '💥 We have found a New Expensify Deploy Blocker, if you have any idea which PR could be causing this, please comment in the issue: <${{ github.event.issue.html_url }}|${{ github.event.issue.title }}>',
-          }]) }}
+          echo ${{ toJSON([{ color: '#DB4545', text: '💥 We have found a New Expensify Deploy Blocker, if you have any idea which PR could be causing this, please comment in the issue: <${{ github.event.issue.html_url }}|${{ github.event.issue.title }}>'}]) }}
