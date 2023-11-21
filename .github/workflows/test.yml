@@ -8,10 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          if gh api /orgs/Andrew-Test-Org/teams/rory-custom-team/memberships/${{ github.actor }} --silent; then
-            echo "IS_DEPLOYER=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "IS_DEPLOYER=false" >> "$GITHUB_OUTPUT"
-          fi
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
+          echo ${{ toJSON([{
+            color: '#DB4545',
+            text: '💥 We have found a New Expensify Deploy Blocker, if you have any idea which PR could be causing this, please comment in the issue: <${{ github.event.issue.html_url }}|${{ github.event.issue.title }}>',
+          }]) }}
