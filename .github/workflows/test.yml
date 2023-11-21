@@ -7,5 +7,13 @@ jobs:
   echo:
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          echo ${{ [{ color: '#DB4545', text: '💥 We have found a New Expensify Deploy Blocker, if you have any idea which PR could be causing this, please comment in the issue: <${{ github.event.issue.html_url }}|${{ toJSON(github.event.issue.title) }}>'}] }}
+      - run: echo ${{ env.CUSTOM_PAYLOAD }}
+        env:
+          CUSTOM_PAYLOAD: |
+            {
+              channel: '#expensify-open-source',
+              attachments: toJSON([{
+                color: '#DB4545',
+                text: '💥 We have found a New Expensify Deploy Blocker, if you have any idea which PR could be causing this, please comment in the issue: <${{ github.event.issue.html_url }}|${{ github.event.issue.title }}>',
+              }])
+            }
